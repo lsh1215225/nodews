@@ -103,9 +103,10 @@
             padding: 25px;
             position: relative;
             min-height: 500px;
-            max-height: 90vh;
+            max-height: 80vh;
             border: 2px solid #333;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .scanlines {
@@ -130,6 +131,27 @@
             position: relative;
             z-index: 2;
             text-align: center;
+        }
+
+        /* Custom scrollbar for retro TV style */
+        .screen::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .screen::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        .screen::-webkit-scrollbar-thumb {
+            background: rgba(255, 140, 0, 0.6);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }
+
+        .screen::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 140, 0, 0.8);
+            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
         }
 
         .logo {
@@ -189,6 +211,7 @@
             border: 1px solid #00ff41;
             border-radius: 8px;
             padding: 10px;
+            text-align: center;
         }
 
         .stat-label {
@@ -206,9 +229,17 @@
         .controls {
             display: flex;
             justify-content: space-around;
+            align-items: center;
             margin-top: 25px;
             padding-top: 20px;
             border-top: 2px solid #333;
+        }
+
+        .controls > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .control-knob {
@@ -244,6 +275,9 @@
             color: #ffcc66;
             margin-top: 8px;
             text-align: center;
+            font-family: 'Special Elite', monospace;
+            white-space: nowrap;
+            min-width: 80px;
         }
 
         .warning {
@@ -306,6 +340,7 @@
             line-height: 1.5;
             color: #ffcc66;
             margin-bottom: 10px;
+            text-align: center;
         }
 
         .features-list {
@@ -322,6 +357,7 @@
             padding: 8px;
             font-size: 0.95em;
             color: #ffcc66;
+            text-align: center;
         }
 
         .imdb-link {
