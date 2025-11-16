@@ -307,15 +307,16 @@
 
 
         .watermark {
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 0.8em;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2em;
             color: #ff8c00;
             font-family: 'Special Elite', monospace;
             opacity: 0.6;
             text-shadow: 0 0 5px #ff8c00;
-            z-index: 10;
+            z-index: 100;
+            pointer-events: none;
         }
 
         .additional-info {
