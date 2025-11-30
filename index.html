@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Variance Authority - TVA | Retro TV</title>
+    <title>Metropolis Post - Batman vs Superman Special Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700;900&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -14,537 +15,324 @@
         }
 
         body {
-            background: 
-                linear-gradient(45deg, #1a0d0d, #2d1a1a),
-                radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            font-family: 'Special Elite', monospace;
-            color: #00ff41;
-            overflow-x: hidden;
-            padding: 20px 0;
-            position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 140, 0, 0.02) 2px,
-                    rgba(255, 140, 0, 0.02) 4px
-                );
-            pointer-events: none;
-            z-index: 0;
+            font-family: 'Merriweather', serif;
+            background-color: #F8F5EF;
+            color: #212121;
+            line-height: 1.7;
+            font-size: 16px;
         }
 
-        .tv-container {
-            width: 90vw;
-            max-width: 800px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a, #333333);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 
-                0 0 30px rgba(255, 140, 0, 0.2),
-                inset 0 0 20px rgba(0, 0, 0, 0.7),
-                0 20px 40px rgba(0, 0, 0, 0.8),
-                0 0 0 2px rgba(255, 140, 0, 0.3);
-            position: relative;
-            border: 3px solid #444;
-            z-index: 1;
-            margin: 20px 0;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px;
         }
 
-        .antenna {
-            position: absolute;
-            width: 4px;
-            height: 80px;
-            background: linear-gradient(to bottom, #c0c0c0, #808080);
-            top: -60px;
-        }
-
-        .antenna.left {
-            left: 80px;
-            transform: rotate(-15deg);
-            transform-origin: bottom;
-        }
-
-        .antenna.right {
-            right: 80px;
-            transform: rotate(15deg);
-            transform-origin: bottom;
-        }
-
-        .antenna::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 4px;
-            background: #c0c0c0;
-            top: -2px;
-            left: -8px;
-        }
-
-        .screen {
-            background: 
-                radial-gradient(ellipse at center, #1a2a1a 0%, #0f1f0f 40%, #000 80%),
-                linear-gradient(45deg, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
-            border-radius: 15px;
-            padding: 25px;
-            position: relative;
-            min-height: 500px;
-            max-height: 80vh;
-            border: 2px solid #333;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        .scanlines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 140, 0, 0.03) 2px,
-                    rgba(255, 140, 0, 0.03) 4px
-                );
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
+        /* Masthead */
+        .masthead {
             text-align: center;
+            margin-bottom: 32px;
+            border-top: 1px solid #D1D1D1;
+            border-bottom: 1px solid #D1D1D1;
+            padding: 24px 0;
         }
 
-        /* Custom scrollbar for retro TV style */
-        .screen::-webkit-scrollbar {
-            width: 8px;
+        .masthead h1 {
+            font-family: 'Zilla Slab', serif;
+            font-size: 60px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: #0A0A0A;
+            margin-bottom: 8px;
         }
 
-        .screen::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-        }
-
-        .screen::-webkit-scrollbar-thumb {
-            background: rgba(255, 140, 0, 0.6);
-            border-radius: 4px;
-            border: 1px solid rgba(255, 140, 0, 0.3);
-        }
-
-        .screen::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 140, 0, 0.8);
-            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
-        }
-
-        .logo {
-            font-family: 'Special Elite', monospace;
-            font-size: 2.5em;
-            font-weight: normal;
-            color: #ff8c00;
-            text-shadow: 
-                0 0 10px #ff8c00,
-                0 0 20px #ff8c00,
-                0 0 30px #ff8c00;
-            margin-bottom: 10px;
-        }
-
-
-
-        .subtitle {
-            font-size: 1.4em;
-            color: #66ff66;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        .info-section {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #00ff41;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
-        }
-
-        .info-title {
-            font-family: 'Special Elite', monospace;
-            font-size: 1.6em;
-            color: #00ff41;
-            margin-bottom: 15px;
-            text-shadow: 0 0 8px #00ff41;
-        }
-
-        .info-text {
-            font-size: 1.3em;
-            line-height: 1.6;
-            color: #99ff99;
-            margin-bottom: 15px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .stat-item {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid #00ff41;
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .stat-label {
-            font-size: 1em;
-            color: #66ff66;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-size: 1.4em;
-            color: #00ff41;
-            font-weight: bold;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px solid #333;
-        }
-
-        .controls > div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .control-knob {
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #333, #111);
-            border-radius: 50%;
-            border: 3px solid #666;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .control-knob:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
-        }
-
-        .control-knob::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 20px;
-            background: #00ff41;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .control-label {
-            font-size: 0.9em;
-            color: #ffcc66;
+        .masthead .metadata {
+            font-family: 'Cutive Mono', monospace;
+            font-size: 13px;
+            color: #6B6B6B;
             margin-top: 8px;
-            text-align: center;
-            font-family: 'Special Elite', monospace;
-            white-space: nowrap;
-            min-width: 80px;
         }
 
-        .warning {
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px solid #ff4444;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            color: #ff6666;
-            font-weight: bold;
-        }
-
-
-
-        .status-light {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 15px;
-            height: 15px;
-            background: radial-gradient(circle, #00ff41, #008833);
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
-            z-index: 5;
-        }
-
-
-
-        .watermark {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 1.2em;
-            color: #ff8c00;
-            font-family: 'Special Elite', monospace;
-            opacity: 0.6;
-            text-shadow: 0 0 5px #ff8c00;
-            z-index: 100;
-            pointer-events: none;
-        }
-
-        .additional-info {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #ff8c00;
-            border-radius: 12px;
-            padding: 18px;
-            margin: 18px 0;
-            color: #ffcc66;
-        }
-
-        .additional-title {
-            font-family: 'Special Elite', monospace;
-            font-size: 1.4em;
-            color: #ff8c00;
-            margin-bottom: 12px;
-            text-shadow: 0 0 6px #ff8c00;
-        }
-
-        .additional-text {
-            font-size: 1.1em;
-            line-height: 1.5;
-            color: #ffcc66;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .feature-item {
-            background: rgba(255, 140, 0, 0.1);
-            border: 1px solid #ff8c00;
-            border-radius: 6px;
+        .masthead .urgent-banner {
+            background-color: #A92C2C;
+            color: white;
             padding: 8px;
-            font-size: 0.95em;
-            color: #ffcc66;
+            font-family: 'Zilla Slab', serif;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 16px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Typography */
+        h1.headline {
+            font-family: 'Zilla Slab', serif;
+            font-size: 76px;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #0A0A0A;
             text-align: center;
+            margin-bottom: 16px;
+            column-span: all;
         }
 
-        .imdb-link {
+        h2.subheadline {
+            font-family: 'Merriweather', serif;
+            font-size: 39px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #212121;
             text-align: center;
-            margin-top: 20px;
-            padding: 15px;
-            border-top: 2px solid #444;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 24px;
+            column-span: all;
         }
 
-        .imdb-link a {
-            color: #ff8c00;
-            text-decoration: none;
-            font-family: 'Special Elite', monospace;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 8px 16px;
-            border: 2px solid #ff8c00;
-            border-radius: 8px;
-            background: rgba(255, 140, 0, 0.1);
+        h3.section-title {
+            font-family: 'Zilla Slab', serif;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #0A0A0A;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
 
-        .imdb-link a:hover {
-            color: #ffcc66;
-            background: rgba(255, 140, 0, 0.2);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
-            transform: scale(1.05);
+        .byline {
+            font-family: 'Cutive Mono', monospace;
+            font-size: 13px;
+            color: #6B6B6B;
+            text-align: center;
+            margin-bottom: 24px;
         }
 
-        .miss-minutes-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: linear-gradient(45deg, #ff8c00, #ffaa00);
-            color: #000;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
-            font-family: 'Special Elite', monospace;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
-            z-index: 20;
+        /* Layout Grid */
+        .newspaper-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            column-gap: 24px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Drop Cap */
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Zilla Slab', serif;
+            font-size: 3em;
+            line-height: 1;
+            font-weight: 900;
+            margin-right: 8px;
+            margin-top: 4px;
+            color: #0A0A0A;
+        }
+
+        /* Articles */
+        .article {
+            margin-bottom: 32px;
+        }
+
+        .article p {
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+
+        .article img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(100%) contrast(1.2);
+            margin: 16px 0;
+        }
+
+        .image-caption {
+            font-family: 'Cutive Mono', monospace;
+            font-size: 13px;
+            color: #6B6B6B;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            border-left: 4px solid #D1D1D1;
+            border-right: 4px solid #D1D1D1;
+            padding: 16px;
+            margin: 32px 0;
+            background-color: rgba(209, 209, 209, 0.1);
+        }
+
+        /* Decorative Rules */
+        .section-divider {
+            border: none;
+            border-top: 4px double #D1D1D1;
+            margin: 64px 0 32px 0;
+        }
+
+        .article-divider {
+            border: none;
+            border-top: 1px solid #D1D1D1;
+            margin: 24px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .newspaper-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+            .container {
+                padding: 24px;
+            }
         }
 
         @media (max-width: 600px) {
-            .tv-container {
-                width: 95vw;
-                padding: 20px;
-            }
-            
-            .logo {
-                font-size: 2em;
-            }
-            
-
-            
-            .info-text {
-                font-size: 1.1em;
-            }
-            
-            .stats {
+            .newspaper-layout {
                 grid-template-columns: 1fr;
+            }
+            h1.headline {
+                font-size: 36px;
+            }
+            h2.subheadline {
+                font-size: 24px;
+            }
+            .masthead h1 {
+                font-size: 36px;
+            }
+            .article p {
+                text-align: left;
+            }
+            .container {
+                padding: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="tv-container">
-        <!-- Antennas -->
-        <div class="antenna left"></div>
-        <div class="antenna right"></div>
-        
-        <!-- Status Light -->
-        <div class="status-light"></div>
-        
-        <!-- Miss Minutes Badge -->
-        <div class="miss-minutes-badge">MISS MINUTES SYSTEM</div>
-        
-        <!-- Screen -->
-        <div class="screen">
-            <div class="scanlines"></div>
+    <div class="container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1>METROPOLIS POST</h1>
+            <div class="metadata">VOL. 83, NO. 277 | METROPOLIS, FRIDAY, MARCH 25 | PRICE: 25¢</div>
+            <div class="urgent-banner">BREAKING: CITY UNDER THREAT</div>
+        </header>
+
+        <!-- Main Story -->
+        <article class="article full-width">
+            <h1 class="headline">ALIEN GOD VS. GOTHAM'S BAT: CITY IN FEAR AS TITANS CLASH</h1>
+            <h2 class="subheadline">Debate rages over Superman's unchecked power as a new, brutal form of justice emerges from the shadows</h2>
+            <div class="byline">By Lois Lane & Clark Kent | Staff Writers</div>
             
-            <div class="content">
-                <!-- Logo -->
-                <div class="logo">TIME VARIANCE AUTHORITY</div>
-                <div class="subtitle">Guardians of the Sacred Timeline</div>
-                
-                <!-- Warning -->
-                <div class="warning">
-                    ⚠️ WARNING: Unauthorized time travel detected ⚠️
-                </div>
-                
-                <!-- Main Information -->
-                <div class="info-section">
-                    <div class="info-title">About TVA</div>
-                    <div class="info-text">
-                        The Time Variance Authority is a mysterious organization dedicated to maintaining the stability of the multiverse timeline.
+            <div class="newspaper-layout">
+                <div style="grid-column: 1 / -1;">
+                    <p class="drop-cap">T<span style="font-family: 'Merriweather', serif; font-size: 16px;">he sky above Metropolis darkened yesterday as two of the world's most powerful beings engaged in a battle that left the city questioning everything it thought it knew about heroism. Superman, the alien protector who has sworn to defend humanity, found himself face-to-face with Gotham City's infamous vigilante Batman in a confrontation that has sent shockwaves through every corner of the globe.</span></p>
+                    
+                    <p>The incident began when Bruce Wayne, CEO of Wayne Enterprises and secretly the caped crusader of Gotham, arrived in Metropolis with mounting suspicions about the true nature of Superman's intentions. Wayne, whose own parents were murdered by common criminals, has long harbored a deep distrust of beings with god-like powers operating without oversight.</p>
+                    
+                    <p>"Power without responsibility is the road to tyranny," Wayne declared in a statement released shortly before the confrontation. "We cannot place our trust in someone who answers to no earthly authority."</p>
+                    
+                    <div class="pull-quote">
+                        "Is it unreasonable to demand accountability from someone who could level entire cities with a single punch?" - Bruce Wayne
                     </div>
-                    <div class="info-text">
-                        Under the leadership of the Time-Keepers, TVA ensures the integrity of the Sacred Timeline and prevents the recurrence of multiverse wars.
-                    </div>
-                </div>
-                
-                <!-- Statistics -->
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-label">Established</div>
-                        <div class="stat-value">1986</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Headquarters</div>
-                        <div class="stat-value">Beyond Time</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Leadership</div>
-                        <div class="stat-value">Time-Keepers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">First Appearance</div>
-                        <div class="stat-value">Thor #371</div>
-                    </div>
-                </div>
-                
-                <!-- Additional Information -->
-                <div class="additional-info">
-                    <div class="additional-title">TVA Operations</div>
-                    <div class="additional-text">
-                        TVA employs advanced temporal technology and specialized agents to monitor and maintain timeline stability across all realities.
-                    </div>
-                    <div class="features-list">
-                        <div class="feature-item">• Temporal Reset Devices</div>
-                        <div class="feature-item">• Timeline Monitoring</div>
-                        <div class="feature-item">• Reality Verification</div>
-                        <div class="feature-item">• Multiverse Protection</div>
-                    </div>
-                    <div class="additional-text">
-                        Our mission is to prevent catastrophic timeline events and ensure the Sacred Timeline remains undisturbed by unauthorized temporal activities.
-                    </div>
-                </div>
-                
-                <!-- Control Knobs -->
-                <div class="controls">
-                    <div>
-                        <div class="control-knob"></div>
-                        <div class="control-label">Time Adjust</div>
-                    </div>
-                    <div>
-                        <div class="control-knob"></div>
-                        <div class="control-label">Power Level</div>
-                    </div>
-                    <div>
-                        <div class="control-knob"></div>
-                        <div class="control-label">Alert Status</div>
-                    </div>
-                </div>
-                
-                <!-- IMDb Link -->
-                <div class="imdb-link">
-                    <a href="https://www.imdb.com/title/tt9140554/" target="_blank" rel="noopener noreferrer">
-                        🎬 LOKI (2021) on IMDb
-                    </a>
+                    
+                    <p>Superman, whose alter ego Clark Kent works as a journalist at the Daily Planet, defended his actions, citing the need to protect innocent lives from threats that no conventional force could handle. "I understand the fear," Kent explained, "but when faced with enemies that could destroy entire civilizations, we cannot afford to hesitate."</p>
+                    
+                    <p>The battle itself, witnessed by thousands, was both terrifying and awe-inspiring. Superman's heat vision and flight capabilities proved nearly unstoppable, while Batman's advanced technology and tactical brilliance kept the Dark Knight ahead of his more powerful opponent for nearly an hour.</p>
+                    
+                    <p>Dr. Lex Luthor, Metropolis's most prominent scientist and longtime critic of extraterrestrial intervention, was quick to capitalize on the spectacle. "This proves exactly what I've been saying," Luthor stated during an emergency press conference. "Alien interference in human affairs will only lead to our destruction."</p>
                 </div>
             </div>
             
-            <div class="watermark">MARVEL TVA 2025</div>
+            <hr class="section-divider">
+        </article>
+
+        <!-- Secondary Articles -->
+        <div class="newspaper-layout">
+            <article class="article">
+                <h3 class="section-title">Wayne Enterprises CEO Questions Alien's Motives</h3>
+                <p>Bruce Wayne's surprise appearance in Metropolis yesterday has raised questions about Wayne Enterprises' involvement in monitoring metahuman activity. Sources suggest that Wayne has been funding research into Kryptonian technology for months.</p>
+                <p>"Mr. Wayne believes that true preparedness means understanding every potential threat to global security," said Lucius Fox, Wayne's chief operating officer. "This is merely an extension of that philosophy."</p>
+                <p>Critics, however, have accused Wayne of overreach, pointing to reports of illegal surveillance conducted by Wayne tech in cities across the country.</p>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Daily Planet Defends Superman's Heroism</h3>
+                <p>The Daily Planet newspaper, Superman's longtime employer, has published an editorial defending the alien hero against growing criticism. Editor Perry White called the criticism "unfair and unfounded."</p>
+                <p>"Superman has saved this planet more times than we can count," White wrote in the Planet's editorial page. "To condemn him now for protecting us from threats we cannot even comprehend is both ungrateful and dangerous."</p>
+                <p>The editorial has sparked heated debate among readers, with support divided roughly along ideological lines.</p>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Government Calls for Metahuman Oversight</h3>
+                <p>Following the spectacular battle, several members of Congress have called for emergency hearings on the regulation of individuals with extraordinary abilities. Senator Mayors, chair of the Armed Services Committee, announced plans for immediate hearings.</p>
+                <p>"We cannot ignore what happened yesterday," Mayors stated. "The question is not whether Superman or Batman mean well - it's whether any individual, no matter how noble their intentions, should wield such power without oversight."</p>
+                <p>The proposal has drawn fire from civil liberties groups, who warn against the dangers of government control over heroic activities.</p>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Witnesses Describe Terror and Wonder</h3>
+                <p>Citizens who witnessed the battle between the two heroes have reported a mixture of fear and fascination. "I've never been so scared and so amazed at the same time," said Maria Santos, a construction worker who was caught in the crossfire.</p>
+                <p>"These are supposed to be the good guys," added Marcus Johnson, a school teacher whose classroom window provided an unwanted front-row seat. "If they fight each other this destructively, what happens when the real villains arrive?"</p>
+                
+                <div class="image-caption">
+                    Cleanup crews work through the night after the battle left downtown Metropolis with extensive property damage. No casualties were reported.
+                </div>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Global Leaders Express Concern</h3>
+                <p>International reaction to the battle has been swift and critical. The United Nations has called for an emergency session to address concerns about metahuman activities crossing national borders.</p>
+                <p>"Yesterday's events demonstrate the urgent need for international cooperation on metahuman issues," said Secretary-General Phaus. "No single nation can adequately monitor or control individuals with such capabilities."</p>
+                <p>Several countries have already begun developing their own metahuman response programs, raising fears of an escalating arms race between nations seeking to compete with existing metahumans.</p>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Expert Analysis: A New Era of Heroes</h3>
+                <p>Dr. Sarah Chen, professor of Political Science at Metropolis University, suggests that the battle represents a fundamental shift in how humanity must think about heroism and power.</p>
+                <p>"We're entering an era where traditional concepts of national sovereignty and civilian oversight are inadequate," Dr. Chen explained. "We must develop new frameworks for dealing with beings who operate beyond our conventional constraints."</p>
+                <p>The academic community has been divided on the implications, with some calling for new international laws governing metahuman activities.</p>
+            </article>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Bottom Section -->
+        <div class="newspaper-layout">
+            <article class="article">
+                <h3 class="section-title">Editorial: The Price of Protection</h3>
+                <p class="drop-cap">I<span style="font-family: 'Merriweather', serif; font-size: 16px;">t has been three days since Superman and Batman nearly destroyed downtown Metropolis in their confrontation, and the questions remain the same: Who watches the watchers? Who regulates the regulators? And perhaps most importantly, who protects us from our protectors?</span></p>
+                <p>The truth is uncomfortable but necessary: we have become dependent on individuals whose power vastly exceeds our ability to control or understand. Superman could level our cities if he chose to. Batman could dismantle our government with the resources at his disposal. The fact that they choose not to do so is little comfort when we see the destruction they can cause even in conflict with each other.</p>
+                <p>Perhaps it is time for a new kind of conversation - one that moves beyond hero worship and toward genuine accountability. Not because we doubt Superman's intentions or Batman's dedication to justice, but because the stakes are simply too high for anything less.</p>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Letters to the Editor</h3>
+                <p><strong>"Superman saved my family from the Doomsday threat,"</strong> writes Jennifer Walsh of Midtown. <strong>"I will not turn my back on him now because some rich man with trust fund issues is afraid of his power."</strong></p>
+                <div class="article-divider"></div>
+                <p><strong>"Bruce Wayne is asking the right questions,"</strong> responds Robert Kim, a professor of ethics. <strong>"Unchecked power, no matter how well-intentioned, is a recipe for disaster."</strong></p>
+                <div class="article-divider"></div>
+                <p><strong>"Both men are missing the point,"</strong> notes Elder Rodriguez. <strong>"The real threat isn't to Metropolis from Superman or Gotham from Batman. The real threat is what happens when our enemies discover they can manipulate our heroes into fighting each other."</strong></p>
+            </article>
+
+            <article class="article">
+                <h3 class="section-title">Weather & Markets</h3>
+                <p><strong>Metropolis Weather:</strong> Clearing skies with continued cleanup operations. High: 72°F</p>
+                <div class="article-divider"></div>
+                <p><strong>Gotham Weather:</strong> Cloudy with rain showers. Bruce Wayne Foundation providing disaster relief. High: 68°F</p>
+                <div class="article-divider"></div>
+                <p><strong>Stock Update:</strong> Wayne Enterprises: +3.2% | LexCorp: +8.7% | Daily Planet Media: -1.4%</p>
+                <div class="article-divider"></div>
+                <p><strong>Next Edition:</strong> Full coverage of Justice League formation announcement expected Tuesday.</p>
+            </article>
         </div>
     </div>
-
-    <script>
-        // Only button hover effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const knobs = document.querySelectorAll('.control-knob');
-            
-            knobs.forEach(knob => {
-                knob.addEventListener('click', function() {
-                    // Simple click effect
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 150);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
