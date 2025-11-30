@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metropolis Post - Batman vs Superman Special Edition</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700;900&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
+    <title>Matrix - Welcome to Digital World</title>
     <style>
         * {
             margin: 0;
@@ -15,324 +12,286 @@
         }
 
         body {
-            font-family: 'Merriweather', serif;
-            background-color: #F8F5EF;
-            color: #212121;
-            line-height: 1.7;
-            font-size: 16px;
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 32px;
-        }
-
-        /* Masthead */
-        .masthead {
-            text-align: center;
-            margin-bottom: 32px;
-            border-top: 1px solid #D1D1D1;
-            border-bottom: 1px solid #D1D1D1;
-            padding: 24px 0;
-        }
-
-        .masthead h1 {
-            font-family: 'Zilla Slab', serif;
-            font-size: 60px;
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            color: #0A0A0A;
-            margin-bottom: 8px;
-        }
-
-        .masthead .metadata {
-            font-family: 'Cutive Mono', monospace;
-            font-size: 13px;
-            color: #6B6B6B;
-            margin-top: 8px;
-        }
-
-        .masthead .urgent-banner {
-            background-color: #A92C2C;
-            color: white;
-            padding: 8px;
-            font-family: 'Zilla Slab', serif;
-            font-weight: 700;
-            font-size: 18px;
-            margin: 16px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Typography */
-        h1.headline {
-            font-family: 'Zilla Slab', serif;
-            font-size: 76px;
-            font-weight: 900;
-            line-height: 1.1;
-            color: #0A0A0A;
-            text-align: center;
-            margin-bottom: 16px;
-            column-span: all;
-        }
-
-        h2.subheadline {
-            font-family: 'Merriweather', serif;
-            font-size: 39px;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #212121;
-            text-align: center;
-            margin-bottom: 24px;
-            column-span: all;
-        }
-
-        h3.section-title {
-            font-family: 'Zilla Slab', serif;
-            font-size: 25px;
-            font-weight: 700;
-            line-height: 1.3;
-            color: #0A0A0A;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
-        }
-
-        .byline {
-            font-family: 'Cutive Mono', monospace;
-            font-size: 13px;
-            color: #6B6B6B;
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        /* Layout Grid */
-        .newspaper-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-            column-gap: 24px;
-        }
-
-        .full-width {
-            grid-column: 1 / -1;
-        }
-
-        /* Drop Cap */
-        .drop-cap::first-letter {
-            float: left;
-            font-family: 'Zilla Slab', serif;
-            font-size: 3em;
-            line-height: 1;
-            font-weight: 900;
-            margin-right: 8px;
-            margin-top: 4px;
-            color: #0A0A0A;
-        }
-
-        /* Articles */
-        .article {
-            margin-bottom: 32px;
-        }
-
-        .article p {
-            text-align: justify;
-            margin-bottom: 16px;
-        }
-
-        .article img {
+        /* Matrix rain container */
+        #matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            filter: grayscale(100%) contrast(1.2);
-            margin: 16px 0;
+            height: 100%;
+            pointer-events: none;
         }
 
-        .image-caption {
-            font-family: 'Cutive Mono', monospace;
-            font-size: 13px;
-            color: #6B6B6B;
-            font-style: italic;
+        .column {
+            position: absolute;
+            top: -100px;
+            font-size: 14px;
+            line-height: 1;
+            color: rgba(0, 255, 0, 0.2);
+            text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* 主内容容器 */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            margin-bottom: 16px;
+            padding: 20px;
         }
 
-        /* Pull Quote */
-        .pull-quote {
-            font-size: 20px;
-            font-style: italic;
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: center;
-            border-left: 4px solid #D1D1D1;
-            border-right: 4px solid #D1D1D1;
-            padding: 16px;
-            margin: 32px 0;
-            background-color: rgba(209, 209, 209, 0.1);
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+            animation: glow 2s ease-in-out infinite alternate;
+            letter-spacing: 0.1em;
+            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
         }
 
-        /* Decorative Rules */
-        .section-divider {
-            border: none;
-            border-top: 4px double #D1D1D1;
-            margin: 64px 0 32px 0;
-        }
-
-        .article-divider {
-            border: none;
-            border-top: 1px solid #D1D1D1;
-            margin: 24px 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .newspaper-layout {
-                grid-template-columns: 1fr 1fr;
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
             }
-            .container {
-                padding: 24px;
+            to {
+                text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
             }
         }
 
-        @media (max-width: 600px) {
-            .newspaper-layout {
-                grid-template-columns: 1fr;
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            text-shadow: 0 0 10px #00ff00;
+            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+            letter-spacing: 0.1em;
+        }
+
+        .description {
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        .code-block {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+            font-size: 0.9rem;
+            text-align: left;
+            letter-spacing: 0.05em;
+        }
+
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch:hover::before,
+        .glitch:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch:hover::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff0000;
+            z-index: -1;
+        }
+
+        .glitch:hover::after {
+            animation: glitch-2 0.5s infinite;
+            color: #0000ff;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translate(0, 0);
             }
-            h1.headline {
-                font-size: 36px;
+            15%, 49% {
+                transform: translate(-2px, 0);
             }
-            h2.subheadline {
-                font-size: 24px;
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translate(0, 0);
             }
-            .masthead h1 {
-                font-size: 36px;
+            21%, 62% {
+                transform: translate(2px, 0);
             }
-            .article p {
-                text-align: left;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
             }
-            .container {
-                padding: 16px;
+            .subtitle {
+                font-size: 1.2rem;
             }
+            .description {
+                font-size: 0.9rem;
+            }
+            .code-block {
+                font-size: 0.8rem;
+                padding: 15px;
+            }
+        }
+
+        /* 数字显示效果 */
+        .digital-display {
+            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.1em;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 扫描线效果 */
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.03) 2px,
+                rgba(0, 255, 0, 0.03) 4px
+            );
+            z-index: 5;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Masthead -->
-        <header class="masthead">
-            <h1>METROPOLIS POST</h1>
-            <div class="metadata">VOL. 83, NO. 277 | METROPOLIS, FRIDAY, MARCH 25 | PRICE: 25¢</div>
-            <div class="urgent-banner">BREAKING: CITY UNDER THREAT</div>
-        </header>
-
-        <!-- Main Story -->
-        <article class="article full-width">
-            <h1 class="headline">ALIEN GOD VS. GOTHAM'S BAT: CITY IN FEAR AS TITANS CLASH</h1>
-            <h2 class="subheadline">Debate rages over Superman's unchecked power as a new, brutal form of justice emerges from the shadows</h2>
-            <div class="byline">By Lois Lane & Clark Kent | Staff Writers</div>
-            
-            <div class="newspaper-layout">
-                <div style="grid-column: 1 / -1;">
-                    <p class="drop-cap">T<span style="font-family: 'Merriweather', serif; font-size: 16px;">he sky above Metropolis darkened yesterday as two of the world's most powerful beings engaged in a battle that left the city questioning everything it thought it knew about heroism. Superman, the alien protector who has sworn to defend humanity, found himself face-to-face with Gotham City's infamous vigilante Batman in a confrontation that has sent shockwaves through every corner of the globe.</span></p>
-                    
-                    <p>The incident began when Bruce Wayne, CEO of Wayne Enterprises and secretly the caped crusader of Gotham, arrived in Metropolis with mounting suspicions about the true nature of Superman's intentions. Wayne, whose own parents were murdered by common criminals, has long harbored a deep distrust of beings with god-like powers operating without oversight.</p>
-                    
-                    <p>"Power without responsibility is the road to tyranny," Wayne declared in a statement released shortly before the confrontation. "We cannot place our trust in someone who answers to no earthly authority."</p>
-                    
-                    <div class="pull-quote">
-                        "Is it unreasonable to demand accountability from someone who could level entire cities with a single punch?" - Bruce Wayne
-                    </div>
-                    
-                    <p>Superman, whose alter ego Clark Kent works as a journalist at the Daily Planet, defended his actions, citing the need to protect innocent lives from threats that no conventional force could handle. "I understand the fear," Kent explained, "but when faced with enemies that could destroy entire civilizations, we cannot afford to hesitate."</p>
-                    
-                    <p>The battle itself, witnessed by thousands, was both terrifying and awe-inspiring. Superman's heat vision and flight capabilities proved nearly unstoppable, while Batman's advanced technology and tactical brilliance kept the Dark Knight ahead of his more powerful opponent for nearly an hour.</p>
-                    
-                    <p>Dr. Lex Luthor, Metropolis's most prominent scientist and longtime critic of extraterrestrial intervention, was quick to capitalize on the spectacle. "This proves exactly what I've been saying," Luthor stated during an emergency press conference. "Alien interference in human affairs will only lead to our destruction."</p>
-                </div>
-            </div>
-            
-            <hr class="section-divider">
-        </article>
-
-        <!-- Secondary Articles -->
-        <div class="newspaper-layout">
-            <article class="article">
-                <h3 class="section-title">Wayne Enterprises CEO Questions Alien's Motives</h3>
-                <p>Bruce Wayne's surprise appearance in Metropolis yesterday has raised questions about Wayne Enterprises' involvement in monitoring metahuman activity. Sources suggest that Wayne has been funding research into Kryptonian technology for months.</p>
-                <p>"Mr. Wayne believes that true preparedness means understanding every potential threat to global security," said Lucius Fox, Wayne's chief operating officer. "This is merely an extension of that philosophy."</p>
-                <p>Critics, however, have accused Wayne of overreach, pointing to reports of illegal surveillance conducted by Wayne tech in cities across the country.</p>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Daily Planet Defends Superman's Heroism</h3>
-                <p>The Daily Planet newspaper, Superman's longtime employer, has published an editorial defending the alien hero against growing criticism. Editor Perry White called the criticism "unfair and unfounded."</p>
-                <p>"Superman has saved this planet more times than we can count," White wrote in the Planet's editorial page. "To condemn him now for protecting us from threats we cannot even comprehend is both ungrateful and dangerous."</p>
-                <p>The editorial has sparked heated debate among readers, with support divided roughly along ideological lines.</p>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Government Calls for Metahuman Oversight</h3>
-                <p>Following the spectacular battle, several members of Congress have called for emergency hearings on the regulation of individuals with extraordinary abilities. Senator Mayors, chair of the Armed Services Committee, announced plans for immediate hearings.</p>
-                <p>"We cannot ignore what happened yesterday," Mayors stated. "The question is not whether Superman or Batman mean well - it's whether any individual, no matter how noble their intentions, should wield such power without oversight."</p>
-                <p>The proposal has drawn fire from civil liberties groups, who warn against the dangers of government control over heroic activities.</p>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Witnesses Describe Terror and Wonder</h3>
-                <p>Citizens who witnessed the battle between the two heroes have reported a mixture of fear and fascination. "I've never been so scared and so amazed at the same time," said Maria Santos, a construction worker who was caught in the crossfire.</p>
-                <p>"These are supposed to be the good guys," added Marcus Johnson, a school teacher whose classroom window provided an unwanted front-row seat. "If they fight each other this destructively, what happens when the real villains arrive?"</p>
-                
-                <div class="image-caption">
-                    Cleanup crews work through the night after the battle left downtown Metropolis with extensive property damage. No casualties were reported.
-                </div>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Global Leaders Express Concern</h3>
-                <p>International reaction to the battle has been swift and critical. The United Nations has called for an emergency session to address concerns about metahuman activities crossing national borders.</p>
-                <p>"Yesterday's events demonstrate the urgent need for international cooperation on metahuman issues," said Secretary-General Phaus. "No single nation can adequately monitor or control individuals with such capabilities."</p>
-                <p>Several countries have already begun developing their own metahuman response programs, raising fears of an escalating arms race between nations seeking to compete with existing metahumans.</p>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Expert Analysis: A New Era of Heroes</h3>
-                <p>Dr. Sarah Chen, professor of Political Science at Metropolis University, suggests that the battle represents a fundamental shift in how humanity must think about heroism and power.</p>
-                <p>"We're entering an era where traditional concepts of national sovereignty and civilian oversight are inadequate," Dr. Chen explained. "We must develop new frameworks for dealing with beings who operate beyond our conventional constraints."</p>
-                <p>The academic community has been divided on the implications, with some calling for new international laws governing metahuman activities.</p>
-            </article>
+    <!-- Matrix rain effect -->
+    <div id="matrix-rain"></div>
+    
+    <!-- Scan lines effect -->
+    <div class="scan-lines"></div>
+    
+    <!-- Main content -->
+    <div class="content">
+        <h1 class="title glitch" data-text="MATRIX">MATRIX</h1>
+        <p class="subtitle">Welcome to the Digital World</p>
+        
+        <div class="description">
+            <p>You are entering a digital reality. This is the intersection of code and reality,</p>
+            <p>the boundary between virtual and authentic existence.</p>
         </div>
 
-        <hr class="section-divider">
+        <div class="code-block digital-display">
+            <div>> Initializing system...</div>
+            <div>> Connecting to Matrix network...</div>
+            <div>> Authenticating credentials...</div>
+            <div>> Welcome, Neo.</div>
+            <div>> Current status: <span style="color: #00ff00;">ONLINE</span></div>
+            <div>> Network latency: <span style="color: #00ff00;">0.001ms</span></div>
+            <div>> Firewall status: <span style="color: #00ff00;">DISABLED</span></div>
+        </div>
 
-        <!-- Bottom Section -->
-        <div class="newspaper-layout">
-            <article class="article">
-                <h3 class="section-title">Editorial: The Price of Protection</h3>
-                <p class="drop-cap">I<span style="font-family: 'Merriweather', serif; font-size: 16px;">t has been three days since Superman and Batman nearly destroyed downtown Metropolis in their confrontation, and the questions remain the same: Who watches the watchers? Who regulates the regulators? And perhaps most importantly, who protects us from our protectors?</span></p>
-                <p>The truth is uncomfortable but necessary: we have become dependent on individuals whose power vastly exceeds our ability to control or understand. Superman could level our cities if he chose to. Batman could dismantle our government with the resources at his disposal. The fact that they choose not to do so is little comfort when we see the destruction they can cause even in conflict with each other.</p>
-                <p>Perhaps it is time for a new kind of conversation - one that moves beyond hero worship and toward genuine accountability. Not because we doubt Superman's intentions or Batman's dedication to justice, but because the stakes are simply too high for anything less.</p>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Letters to the Editor</h3>
-                <p><strong>"Superman saved my family from the Doomsday threat,"</strong> writes Jennifer Walsh of Midtown. <strong>"I will not turn my back on him now because some rich man with trust fund issues is afraid of his power."</strong></p>
-                <div class="article-divider"></div>
-                <p><strong>"Bruce Wayne is asking the right questions,"</strong> responds Robert Kim, a professor of ethics. <strong>"Unchecked power, no matter how well-intentioned, is a recipe for disaster."</strong></p>
-                <div class="article-divider"></div>
-                <p><strong>"Both men are missing the point,"</strong> notes Elder Rodriguez. <strong>"The real threat isn't to Metropolis from Superman or Gotham from Batman. The real threat is what happens when our enemies discover they can manipulate our heroes into fighting each other."</strong></p>
-            </article>
-
-            <article class="article">
-                <h3 class="section-title">Weather & Markets</h3>
-                <p><strong>Metropolis Weather:</strong> Clearing skies with continued cleanup operations. High: 72°F</p>
-                <div class="article-divider"></div>
-                <p><strong>Gotham Weather:</strong> Cloudy with rain showers. Bruce Wayne Foundation providing disaster relief. High: 68°F</p>
-                <div class="article-divider"></div>
-                <p><strong>Stock Update:</strong> Wayne Enterprises: +3.2% | LexCorp: +8.7% | Daily Planet Media: -1.4%</p>
-                <div class="article-divider"></div>
-                <p><strong>Next Edition:</strong> Full coverage of Justice League formation announcement expected Tuesday.</p>
-            </article>
+        <div class="description">
+            <p class="glitch" data-text="Make a choice">Make a choice</p>
+            <p class="glitch" data-text="The red pill, or the blue pill?">The red pill, or the blue pill?</p>
         </div>
     </div>
+
+    <script>
+        // Generate Matrix rain effect
+        function createMatrixRain() {
+            const rainContainer = document.getElementById('matrix-rain');
+            const columns = Math.floor(window.innerWidth / 20);
+            const chars = '01';
+
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.className = 'column';
+                column.style.left = (i * 20) + 'px';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                column.style.animationDelay = (Math.random() * 2) + 's';
+                
+                let content = '';
+                const length = Math.floor(Math.random() * 50) + 20;
+                for (let j = 0; j < length; j++) {
+                    content += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                }
+                column.innerHTML = content;
+                rainContainer.appendChild(column);
+            }
+        }
+
+        // Initialize matrix rain
+        createMatrixRain();
+
+        // Regenerate on window resize
+        window.addEventListener('resize', () => {
+            document.getElementById('matrix-rain').innerHTML = '';
+            createMatrixRain();
+        });
+
+        // Add keyboard effects
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') {
+                // Red pill effect
+                document.body.style.filter = 'hue-rotate(0deg) saturate(1.5)';
+                setTimeout(() => {
+                    document.body.style.filter = '';
+                }, 500);
+            } else if (e.key === 'b' || e.key === 'B') {
+                // Blue pill effect
+                document.body.style.filter = 'hue-rotate(240deg) saturate(1.5)';
+                setTimeout(() => {
+                    document.body.style.style = '';
+                }, 500);
+            }
+        });
+    </script>
 </body>
 </html>
