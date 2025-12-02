@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix - Welcome to Digital World</title>
+    <title>Time Variance Authority - TVA | Retro TV</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,285 +14,536 @@
         }
 
         body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
-            overflow: hidden;
-            height: 100vh;
+            background: 
+                linear-gradient(45deg, #1a0d0d, #2d1a1a),
+                radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Special Elite', monospace;
+            color: #00ff41;
+            overflow-x: hidden;
+            padding: 20px 0;
             position: relative;
         }
-
-        /* Matrix rain container */
-        #matrix-rain {
+        
+        body::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 140, 0, 0.02) 2px,
+                    rgba(255, 140, 0, 0.02) 4px
+                );
             pointer-events: none;
+            z-index: 0;
         }
 
-        .column {
+        .tv-container {
+            width: 90vw;
+            max-width: 800px;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a, #333333);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 0 30px rgba(255, 140, 0, 0.2),
+                inset 0 0 20px rgba(0, 0, 0, 0.7),
+                0 20px 40px rgba(0, 0, 0, 0.8),
+                0 0 0 2px rgba(255, 140, 0, 0.3);
+            position: relative;
+            border: 3px solid #444;
+            z-index: 1;
+            margin: 20px 0;
+        }
+
+        .antenna {
             position: absolute;
-            top: -100px;
-            font-size: 14px;
-            line-height: 1;
-            color: rgba(0, 255, 0, 0.2);
-            text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
-            animation: fall linear infinite;
+            width: 4px;
+            height: 80px;
+            background: linear-gradient(to bottom, #c0c0c0, #808080);
+            top: -60px;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.4;
-            }
-            90% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
+        .antenna.left {
+            left: 80px;
+            transform: rotate(-15deg);
+            transform-origin: bottom;
         }
 
-        /* 主内容容器 */
+        .antenna.right {
+            right: 80px;
+            transform: rotate(15deg);
+            transform-origin: bottom;
+        }
+
+        .antenna::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 4px;
+            background: #c0c0c0;
+            top: -2px;
+            left: -8px;
+        }
+
+        .screen {
+            background: 
+                radial-gradient(ellipse at center, #1a2a1a 0%, #0f1f0f 40%, #000 80%),
+                linear-gradient(45deg, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            min-height: 500px;
+            max-height: 80vh;
+            border: 2px solid #333;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 140, 0, 0.03) 2px,
+                    rgba(255, 140, 0, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .content {
             position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            z-index: 2;
             text-align: center;
-            padding: 20px;
         }
 
-        .title {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
-            animation: glow 2s ease-in-out infinite alternate;
-            letter-spacing: 0.1em;
-            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+        /* Custom scrollbar for retro TV style */
+        .screen::-webkit-scrollbar {
+            width: 8px;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
-            }
-            to {
-                text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
-            }
+        .screen::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
         }
+
+        .screen::-webkit-scrollbar-thumb {
+            background: rgba(255, 140, 0, 0.6);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }
+
+        .screen::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 140, 0, 0.8);
+            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+        }
+
+        .logo {
+            font-family: 'Special Elite', monospace;
+            font-size: 2.5em;
+            font-weight: normal;
+            color: #ff8c00;
+            text-shadow: 
+                0 0 10px #ff8c00,
+                0 0 20px #ff8c00,
+                0 0 30px #ff8c00;
+            margin-bottom: 10px;
+        }
+
+
 
         .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-            text-shadow: 0 0 10px #00ff00;
-            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
-            letter-spacing: 0.1em;
+            font-size: 1.4em;
+            color: #66ff66;
+            margin-bottom: 25px;
+            font-weight: bold;
         }
 
-        .description {
-            font-size: 1rem;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            opacity: 0.7;
-            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
-            letter-spacing: 0.05em;
-        }
-
-        .code-block {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
+        .info-section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff41;
+            border-radius: 15px;
             padding: 20px;
-            border-radius: 5px;
             margin: 20px 0;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
-            font-size: 0.9rem;
-            text-align: left;
-            letter-spacing: 0.05em;
+            backdrop-filter: blur(5px);
         }
 
-        .glitch {
+        .info-title {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.6em;
+            color: #00ff41;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px #00ff41;
+        }
+
+        .info-text {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #99ff99;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            color: #66ff66;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.4em;
+            color: #00ff41;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #333;
+        }
+
+        .controls > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-knob {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #333, #111);
+            border-radius: 50%;
+            border: 3px solid #666;
             position: relative;
-            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .glitch:hover::before,
-        .glitch:hover::after {
-            content: attr(data-text);
+        .control-knob:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+        }
+
+        .control-knob::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            width: 4px;
+            height: 20px;
+            background: #00ff41;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        .glitch:hover::before {
-            animation: glitch-1 0.5s infinite;
-            color: #ff0000;
-            z-index: -1;
+        .control-label {
+            font-size: 0.9em;
+            color: #ffcc66;
+            margin-top: 8px;
+            text-align: center;
+            font-family: 'Special Elite', monospace;
+            white-space: nowrap;
+            min-width: 80px;
         }
 
-        .glitch:hover::after {
-            animation: glitch-2 0.5s infinite;
-            color: #0000ff;
-            z-index: -2;
+        .warning {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff4444;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #ff6666;
+            font-weight: bold;
         }
 
-        @keyframes glitch-1 {
-            0%, 14%, 15%, 49%, 50%, 99%, 100% {
-                transform: translate(0, 0);
-            }
-            15%, 49% {
-                transform: translate(-2px, 0);
-            }
-        }
 
-        @keyframes glitch-2 {
-            0%, 20%, 21%, 62%, 63%, 99%, 100% {
-                transform: translate(0, 0);
-            }
-            21%, 62% {
-                transform: translate(2px, 0);
-            }
-        }
 
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            .description {
-                font-size: 0.9rem;
-            }
-            .code-block {
-                font-size: 0.8rem;
-                padding: 15px;
-            }
-        }
-
-        /* 数字显示效果 */
-        .digital-display {
-            font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: 0.1em;
-            text-rendering: optimizeLegibility;
-        }
-
-        /* 扫描线效果 */
-        .scan-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 255, 0, 0.03) 2px,
-                rgba(0, 255, 0, 0.03) 4px
-            );
+        .status-light {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #00ff41, #008833);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
             z-index: 5;
+        }
+
+
+
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2em;
+            color: #ff8c00;
+            font-family: 'Special Elite', monospace;
+            opacity: 0.6;
+            text-shadow: 0 0 5px #ff8c00;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .additional-info {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff8c00;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            color: #ffcc66;
+        }
+
+        .additional-title {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.4em;
+            color: #ff8c00;
+            margin-bottom: 12px;
+            text-shadow: 0 0 6px #ff8c00;
+        }
+
+        .additional-text {
+            font-size: 1.1em;
+            line-height: 1.5;
+            color: #ffcc66;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid #ff8c00;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 0.95em;
+            color: #ffcc66;
+            text-align: center;
+        }
+
+        .imdb-link {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-top: 2px solid #444;
+            position: relative;
+            z-index: 2;
+        }
+
+        .imdb-link a {
+            color: #ff8c00;
+            text-decoration: none;
+            font-family: 'Special Elite', monospace;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 8px 16px;
+            border: 2px solid #ff8c00;
+            border-radius: 8px;
+            background: rgba(255, 140, 0, 0.1);
+        }
+
+        .imdb-link a:hover {
+            color: #ffcc66;
+            background: rgba(255, 140, 0, 0.2);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .miss-minutes-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #ff8c00, #ffaa00);
+            color: #000;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            font-family: 'Special Elite', monospace;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+            z-index: 20;
+        }
+
+        @media (max-width: 600px) {
+            .tv-container {
+                width: 95vw;
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2em;
+            }
+            
+
+            
+            .info-text {
+                font-size: 1.1em;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Matrix rain effect -->
-    <div id="matrix-rain"></div>
-    
-    <!-- Scan lines effect -->
-    <div class="scan-lines"></div>
-    
-    <!-- Main content -->
-    <div class="content">
-        <h1 class="title glitch" data-text="MATRIX">MATRIX</h1>
-        <p class="subtitle">Welcome to the Digital World</p>
+    <div class="tv-container">
+        <!-- Antennas -->
+        <div class="antenna left"></div>
+        <div class="antenna right"></div>
         
-        <div class="description">
-            <p>You are entering a digital reality. This is the intersection of code and reality,</p>
-            <p>the boundary between virtual and authentic existence.</p>
-        </div>
-
-        <div class="code-block digital-display">
-            <div>> Initializing system...</div>
-            <div>> Connecting to Matrix network...</div>
-            <div>> Authenticating credentials...</div>
-            <div>> Welcome, Neo.</div>
-            <div>> Current status: <span style="color: #00ff00;">ONLINE</span></div>
-            <div>> Network latency: <span style="color: #00ff00;">0.001ms</span></div>
-            <div>> Firewall status: <span style="color: #00ff00;">DISABLED</span></div>
-        </div>
-
-        <div class="description">
-            <p class="glitch" data-text="Make a choice">Make a choice</p>
-            <p class="glitch" data-text="The red pill, or the blue pill?">The red pill, or the blue pill?</p>
+        <!-- Status Light -->
+        <div class="status-light"></div>
+        
+        <!-- Miss Minutes Badge -->
+        <div class="miss-minutes-badge">MISS MINUTES SYSTEM</div>
+        
+        <!-- Screen -->
+        <div class="screen">
+            <div class="scanlines"></div>
+            
+            <div class="content">
+                <!-- Logo -->
+                <div class="logo">TIME VARIANCE AUTHORITY</div>
+                <div class="subtitle">Guardians of the Sacred Timeline</div>
+                
+                <!-- Warning -->
+                <div class="warning">
+                    ⚠️ WARNING: Unauthorized time travel detected ⚠️
+                </div>
+                
+                <!-- Main Information -->
+                <div class="info-section">
+                    <div class="info-title">About TVA</div>
+                    <div class="info-text">
+                        The Time Variance Authority is a mysterious organization dedicated to maintaining the stability of the multiverse timeline.
+                    </div>
+                    <div class="info-text">
+                        Under the leadership of the Time-Keepers, TVA ensures the integrity of the Sacred Timeline and prevents the recurrence of multiverse wars.
+                    </div>
+                </div>
+                
+                <!-- Statistics -->
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Established</div>
+                        <div class="stat-value">1986</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Headquarters</div>
+                        <div class="stat-value">Beyond Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Leadership</div>
+                        <div class="stat-value">Time-Keepers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">First Appearance</div>
+                        <div class="stat-value">Thor #371</div>
+                    </div>
+                </div>
+                
+                <!-- Additional Information -->
+                <div class="additional-info">
+                    <div class="additional-title">TVA Operations</div>
+                    <div class="additional-text">
+                        TVA employs advanced temporal technology and specialized agents to monitor and maintain timeline stability across all realities.
+                    </div>
+                    <div class="features-list">
+                        <div class="feature-item">• Temporal Reset Devices</div>
+                        <div class="feature-item">• Timeline Monitoring</div>
+                        <div class="feature-item">• Reality Verification</div>
+                        <div class="feature-item">• Multiverse Protection</div>
+                    </div>
+                    <div class="additional-text">
+                        Our mission is to prevent catastrophic timeline events and ensure the Sacred Timeline remains undisturbed by unauthorized temporal activities.
+                    </div>
+                </div>
+                
+                <!-- Control Knobs -->
+                <div class="controls">
+                    <div>
+                        <div class="control-knob"></div>
+                        <div class="control-label">Time Adjust</div>
+                    </div>
+                    <div>
+                        <div class="control-knob"></div>
+                        <div class="control-label">Power Level</div>
+                    </div>
+                    <div>
+                        <div class="control-knob"></div>
+                        <div class="control-label">Alert Status</div>
+                    </div>
+                </div>
+                
+                <!-- IMDb Link -->
+                <div class="imdb-link">
+                    <a href="https://www.imdb.com/title/tt9140554/" target="_blank" rel="noopener noreferrer">
+                        🎬 LOKI (2021) on IMDb
+                    </a>
+                </div>
+            </div>
+            
+            <div class="watermark">MARVEL TVA 2025</div>
         </div>
     </div>
 
     <script>
-        // Generate Matrix rain effect
-        function createMatrixRain() {
-            const rainContainer = document.getElementById('matrix-rain');
-            const columns = Math.floor(window.innerWidth / 20);
-            const chars = '01';
-
-            for (let i = 0; i < columns; i++) {
-                const column = document.createElement('div');
-                column.className = 'column';
-                column.style.left = (i * 20) + 'px';
-                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                column.style.animationDelay = (Math.random() * 2) + 's';
-                
-                let content = '';
-                const length = Math.floor(Math.random() * 50) + 20;
-                for (let j = 0; j < length; j++) {
-                    content += chars[Math.floor(Math.random() * chars.length)] + '<br>';
-                }
-                column.innerHTML = content;
-                rainContainer.appendChild(column);
-            }
-        }
-
-        // Initialize matrix rain
-        createMatrixRain();
-
-        // Regenerate on window resize
-        window.addEventListener('resize', () => {
-            document.getElementById('matrix-rain').innerHTML = '';
-            createMatrixRain();
-        });
-
-        // Add keyboard effects
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'r' || e.key === 'R') {
-                // Red pill effect
-                document.body.style.filter = 'hue-rotate(0deg) saturate(1.5)';
-                setTimeout(() => {
-                    document.body.style.filter = '';
-                }, 500);
-            } else if (e.key === 'b' || e.key === 'B') {
-                // Blue pill effect
-                document.body.style.filter = 'hue-rotate(240deg) saturate(1.5)';
-                setTimeout(() => {
-                    document.body.style.style = '';
-                }, 500);
-            }
+        // Only button hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const knobs = document.querySelectorAll('.control-knob');
+            
+            knobs.forEach(knob => {
+                knob.addEventListener('click', function() {
+                    // Simple click effect
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
         });
     </script>
 </body>
