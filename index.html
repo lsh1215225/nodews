@@ -3,548 +3,625 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Variance Authority - TVA | Retro TV</title>
+    <title>Superhero Alliance: Avengers Series Review | 1980s News</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Georgia:wght@400;700;900&display=swap');
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            background: 
-                linear-gradient(45deg, #1a0d0d, #2d1a1a),
-                radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            font-family: 'Special Elite', monospace;
-            color: #00ff41;
-            overflow-x: hidden;
-            padding: 20px 0;
-            position: relative;
+            font-family: 'Crimson Text', 'Georgia', serif;
+            background-color: #f8f8f8;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.01) 2px, rgba(0,0,0,.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.01) 2px, rgba(0,0,0,.01) 4px);
+            color: #000;
+            line-height: 1.4;
         }
         
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 140, 0, 0.02) 2px,
-                    rgba(255, 140, 0, 0.02) 4px
-                );
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .tv-container {
-            width: 90vw;
-            max-width: 800px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a, #333333);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 
-                0 0 30px rgba(255, 140, 0, 0.2),
-                inset 0 0 20px rgba(0, 0, 0, 0.7),
-                0 20px 40px rgba(0, 0, 0, 0.8),
-                0 0 0 2px rgba(255, 140, 0, 0.3);
-            position: relative;
-            border: 3px solid #444;
-            z-index: 1;
-            margin: 20px 0;
-        }
-
-        .antenna {
-            position: absolute;
-            width: 4px;
-            height: 80px;
-            background: linear-gradient(to bottom, #c0c0c0, #808080);
-            top: -60px;
-        }
-
-        .antenna.left {
-            left: 80px;
-            transform: rotate(-15deg);
-            transform-origin: bottom;
-        }
-
-        .antenna.right {
-            right: 80px;
-            transform: rotate(15deg);
-            transform-origin: bottom;
-        }
-
-        .antenna::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 4px;
-            background: #c0c0c0;
-            top: -2px;
-            left: -8px;
-        }
-
-        .screen {
-            background: 
-                radial-gradient(ellipse at center, #1a2a1a 0%, #0f1f0f 40%, #000 80%),
-                linear-gradient(45deg, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
-            border-radius: 15px;
-            padding: 25px;
-            position: relative;
-            min-height: 500px;
-            max-height: 80vh;
+        .newspaper {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border: 2px solid #333;
-            overflow-x: hidden;
-            overflow-y: auto;
         }
-
-        .scanlines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 140, 0, 0.03) 2px,
-                    rgba(255, 140, 0, 0.03) 4px
-                );
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
+        
+        .header {
             text-align: center;
-        }
-
-        /* Custom scrollbar for retro TV style */
-        .screen::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .screen::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-        }
-
-        .screen::-webkit-scrollbar-thumb {
-            background: rgba(255, 140, 0, 0.6);
-            border-radius: 4px;
-            border: 1px solid rgba(255, 140, 0, 0.3);
-        }
-
-        .screen::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 140, 0, 0.8);
-            box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
-        }
-
-        .logo {
-            font-family: 'Special Elite', monospace;
-            font-size: 2.5em;
-            font-weight: normal;
-            color: #ff8c00;
-            text-shadow: 
-                0 0 10px #ff8c00,
-                0 0 20px #ff8c00,
-                0 0 30px #ff8c00;
-            margin-bottom: 10px;
-        }
-
-
-
-        .subtitle {
-            font-size: 1.4em;
-            color: #66ff66;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        .info-section {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #00ff41;
-            border-radius: 15px;
             padding: 20px;
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
+            border-bottom: 3px double #333;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
         }
-
-        .info-title {
-            font-family: 'Special Elite', monospace;
-            font-size: 1.6em;
-            color: #00ff41;
+        
+        .newspaper-title {
+            font-family: 'Georgia', serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #ccc;
+            color: #000;
+        }
+        
+        .newspaper-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #666;
             margin-bottom: 15px;
-            text-shadow: 0 0 8px #00ff41;
         }
-
-        .info-text {
-            font-size: 1.3em;
-            line-height: 1.6;
-            color: #99ff99;
+        
+        .date-line {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: 1px solid #333;
+            padding: 5px 15px;
+            display: inline-block;
+            background: #f5f5f5;
+        }
+        
+        .nav-bar {
+            background: #333;
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-family: 'Crimson Text', serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .nav-bar span {
+            margin: 0 20px;
+            font-size: 0.9em;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .main-content {
+            border-right: 2px solid #ccc;
+            padding-right: 20px;
+        }
+        
+        .sidebar {
+            padding-left: 20px;
+        }
+        
+        .main-headline {
+            font-family: 'Georgia', serif;
+            font-size: 2.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-bottom: 4px solid #333;
+            padding-bottom: 10px;
+            color: #000;
+        }
+        
+        .sub-headline {
+            font-family: 'Georgia', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .movie-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #333;
+            background: #fafafa;
+            page-break-inside: avoid;
+        }
+        
+        .movie-title {
+            font-family: 'Georgia', serif;
+            font-size: 2.2em;
+            font-weight: 900;
+            color: #cc0000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 15px;
+            text-align: center;
+            border: 2px solid #cc0000;
+            padding: 10px;
+            background: #fff;
         }
-
-        .stats {
+        
+        .movie-meta {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin: 20px 0;
+            margin: 15px 0;
+            font-size: 0.95em;
         }
-
-        .stat-item {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid #00ff41;
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
+        
+        .meta-item {
+            background: #f0f0f0;
+            padding: 8px;
+            border-left: 3px solid #333;
         }
-
-        .stat-label {
-            font-size: 1em;
-            color: #66ff66;
-            margin-bottom: 5px;
+        
+        .meta-label {
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            color: #333;
         }
-
-        .stat-value {
-            font-size: 1.4em;
-            color: #00ff41;
-            font-weight: bold;
+        
+        .movie-info {
+            margin: 15px 0;
         }
-
-        .controls {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px solid #333;
+        
+        .info-row {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            border-left: 2px solid #ccc;
+            font-family: 'Crimson Text', serif;
         }
-
-        .controls > div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .control-knob {
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #333, #111);
-            border-radius: 50%;
-            border: 3px solid #666;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .control-knob:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
-        }
-
-        .control-knob::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 20px;
-            background: #00ff41;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .control-label {
-            font-size: 0.9em;
-            color: #ffcc66;
-            margin-top: 8px;
-            text-align: center;
-            font-family: 'Special Elite', monospace;
-            white-space: nowrap;
-            min-width: 80px;
-        }
-
-        .warning {
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px solid #ff4444;
-            border-radius: 10px;
+        
+        .cast-section {
+            background: #f8f8f8;
             padding: 15px;
-            margin: 20px 0;
-            color: #ff6666;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+        
+        .cast-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.3em;
             font-weight: bold;
-        }
-
-
-
-        .status-light {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 15px;
-            height: 15px;
-            background: radial-gradient(circle, #00ff41, #008833);
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
-            z-index: 5;
-        }
-
-
-
-        .watermark {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 1.2em;
-            color: #ff8c00;
-            font-family: 'Special Elite', monospace;
-            opacity: 0.6;
-            text-shadow: 0 0 5px #ff8c00;
-            z-index: 100;
-            pointer-events: none;
-        }
-
-        .additional-info {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #ff8c00;
-            border-radius: 12px;
-            padding: 18px;
-            margin: 18px 0;
-            color: #ffcc66;
-        }
-
-        .additional-title {
-            font-family: 'Special Elite', monospace;
-            font-size: 1.4em;
-            color: #ff8c00;
-            margin-bottom: 12px;
-            text-shadow: 0 0 6px #ff8c00;
-        }
-
-        .additional-text {
-            font-size: 1.1em;
-            line-height: 1.5;
-            color: #ffcc66;
+            text-transform: uppercase;
             margin-bottom: 10px;
-            text-align: center;
+            color: #000;
         }
-
-        .features-list {
+        
+        .cast-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            font-size: 0.9em;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .cast-item {
+            padding: 3px 0;
+        }
+        
+        .rating-box {
+            background: #000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .rating-score {
+            font-family: 'Georgia', serif;
+            font-size: 2.5em;
+            font-weight: 900;
+            color: #ffd700;
+        }
+        
+        .rating-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .rating-link:hover .rating-score {
+            color: #ffed4e;
+            text-shadow: 0 0 10px rgba(255, 237, 78, 0.5);
+        }
+        
+        .rating-link:hover + div {
+            color: #ffed4e;
+        }
+        
+        .plot-summary {
+            background: #f5f5f5;
+            padding: 15px;
+            border: 1px solid #333;
+            font-style: italic;
+            margin: 15px 0;
+            line-height: 1.6;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.05em;
+        }
+        
+        .sidebar-section {
+            background: #f0f0f0;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+        }
+        
+        .sidebar-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #cc0000;
+            border-bottom: 2px solid #cc0000;
+            padding-bottom: 5px;
+        }
+        
+        .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin: 15px 0;
+            margin-top: 15px;
         }
-
-        .feature-item {
-            background: rgba(255, 140, 0, 0.1);
-            border: 1px solid #ff8c00;
-            border-radius: 6px;
-            padding: 8px;
-            font-size: 0.95em;
-            color: #ffcc66;
+        
+        .stat-item {
+            background: white;
+            padding: 10px;
             text-align: center;
+            border: 1px solid #333;
         }
-
-        .imdb-link {
+        
+        .stat-number {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #cc0000;
+        }
+        
+        .stat-label {
+            font-family: 'Crimson Text', serif;
+            font-size: 0.8em;
+            color: #666;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px;
             text-align: center;
-            margin-top: 20px;
-            padding: 15px;
-            border-top: 2px solid #444;
-            position: relative;
-            z-index: 2;
+            font-size: 0.9em;
+            border-top: 3px solid #000;
+            font-family: 'Crimson Text', serif;
         }
-
-        .imdb-link a {
-            color: #ff8c00;
-            text-decoration: none;
-            font-family: 'Special Elite', monospace;
+        
+        .article-end {
+            text-align: center;
+            margin: 30px 0;
             font-size: 1.2em;
             font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 8px 16px;
-            border: 2px solid #ff8c00;
-            border-radius: 8px;
-            background: rgba(255, 140, 0, 0.1);
+            color: #666;
+            font-family: 'Georgia', serif;
         }
-
-        .imdb-link a:hover {
-            color: #ffcc66;
-            background: rgba(255, 140, 0, 0.2);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
-            transform: scale(1.05);
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .newspaper {
+                box-shadow: none;
+                border: 1px solid #000;
+            }
         }
-
-        .miss-minutes-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: linear-gradient(45deg, #ff8c00, #ffaa00);
-            color: #000;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
-            font-family: 'Special Elite', monospace;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
-            z-index: 20;
-        }
-
-        @media (max-width: 600px) {
-            .tv-container {
-                width: 95vw;
-                padding: 20px;
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
             }
-            
-            .logo {
-                font-size: 2em;
+            .main-content {
+                border-right: none;
+                padding-right: 0;
             }
-            
-
-            
-            .info-text {
-                font-size: 1.1em;
+            .sidebar {
+                padding-left: 0;
             }
-            
-            .stats {
+            .newspaper-title {
+                font-size: 2.5em;
+            }
+            .movie-meta {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="tv-container">
-        <!-- Antennas -->
-        <div class="antenna left"></div>
-        <div class="antenna right"></div>
+    <div class="newspaper">
+        <header class="header">
+            <h1 class="newspaper-title">The Daily Chronicle</h1>
+            <p class="newspaper-subtitle">Established 1985 • Your Source for Heroic News</p>
+            <div class="date-line">MONDAY, DECEMBER 16, 2025</div>
+        </header>
         
-        <!-- Status Light -->
-        <div class="status-light"></div>
+        <nav class="nav-bar">
+            <span>HOME</span>
+            <span>ENTERTAINMENT</span>
+            <span>MOVIES</span>
+            <span>COMICS</span>
+            <span>SPECIAL FEATURES</span>
+        </nav>
         
-        <!-- Miss Minutes Badge -->
-        <div class="miss-minutes-badge">MISS MINUTES SYSTEM</div>
-        
-        <!-- Screen -->
-        <div class="screen">
-            <div class="scanlines"></div>
+        <div class="content">
+            <main class="main-content">
+                <h1 class="main-headline">Avengers Series: Milestones of the Superhero Era</h1>
+                
+                <article class="movie-section">
+                    <h2 class="movie-title">The Avengers (2012)</h2>
+                    
+                    <div class="movie-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Director:</span> Joss Whedon
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Runtime:</span> 142 minutes
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Release:</span> May 4, 2012 (USA)
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genre:</span> Action/Sci-Fi/Adventure
+                        </div>
+                    </div>
+                    
+                    <div class="movie-info">
+                        <div class="info-row"><strong>IMDb Rating:</strong> 8.0/10 (1.5M votes)</div>
+                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt0848228/" target="_blank" style="color: #0066cc; text-decoration: none;">tt0848228</a></div>
+                        <div class="info-row"><strong>Studio:</strong> Marvel Studios</div>
+                    </div>
+                    
+                    <div class="plot-summary">
+                        A powerful and unforeseen evil force emerges, posing a lethal threat to Earth that no single superhero can withstand. S.H.I.E.L.D., the organization dedicated to protecting global security, finds itself overwhelmed. Their commander, Nick Fury "The Eye" Fury, realizes he must create the "strongest alliance" in history, gathering heroes from all walks of life to save the world from destruction and combat the forces of darkness.
+                    </div>
+                    
+                    <div class="cast-section">
+                        <h3 class="cast-title">Main Cast</h3>
+                        <div class="cast-grid">
+                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
+                            <div class="cast-item">• Chris Evans as Captain America</div>
+                            <div class="cast-item">• Chris Hemsworth as Thor</div>
+                            <div class="cast-item">• Scarlett Johansson as Black Widow</div>
+                            <div class="cast-item">• Jeremy Renner as Hawkeye</div>
+                            <div class="cast-item">• Mark Ruffalo as Hulk</div>
+                            <div class="cast-item">• Samuel L. Jackson as Nick Fury</div>
+                            <div class="cast-item">• Tom Hiddleston as Loki</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-box">
+                        <a href="https://www.imdb.com/title/tt0848228/" target="_blank" class="rating-link">
+                            <div class="rating-score">8.0</div>
+                        </a>
+                        <div>IMDb Rating</div>
+                    </div>
+                </article>
+                
+                <h2 class="sub-headline">Sequels Continue the Legend</h2>
+                
+                <article class="movie-section">
+                    <h2 class="movie-title">Avengers: Age of Ultron (2015)</h2>
+                    
+                    <div class="movie-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Director:</span> Joss Whedon
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Runtime:</span> 142 minutes
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Release:</span> May 1, 2015 (USA)
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genre:</span> Action/Sci-Fi/Adventure
+                        </div>
+                    </div>
+                    
+                    <div class="movie-info">
+                        <div class="info-row"><strong>IMDb Rating:</strong> 7.3/10 (983K votes)</div>
+                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt2395427/" target="_blank" style="color: #0066cc; text-decoration: none;">tt2395427</a></div>
+                    </div>
+                    
+                    <div class="plot-summary">
+                        Tony Stark attempts to restart a defunct peacekeeping project, which becomes the catalyst for a new crisis. The mysterious villain Ultron emerges, forcing the Avengers to reunite and work together to prevent Ultron's plan for human extinction. During the battle, the Avengers encounter two new characters - Wanda Maximoff (Scarlet Witch) and Pietro Maximoff (Quicksilver) - and welcome back an old friend in a new form: Vision.
+                    </div>
+                    
+                    <div class="cast-section">
+                        <h3 class="cast-title">Main Cast</h3>
+                        <div class="cast-grid">
+                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
+                            <div class="cast-item">• Chris Evans as Captain America</div>
+                            <div class="cast-item">• Chris Hemsworth as Thor</div>
+                            <div class="cast-item">• Mark Ruffalo as Hulk</div>
+                            <div class="cast-item">• Scarlett Johansson as Black Widow</div>
+                            <div class="cast-item">• Jeremy Renner as Hawkeye</div>
+                            <div class="cast-item">• Elizabeth Olsen as Scarlet Witch</div>
+                            <div class="cast-item">• Paul Bettany as Vision</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-box">
+                        <a href="https://www.imdb.com/title/tt2395427/" target="_blank" class="rating-link">
+                            <div class="rating-score">7.3</div>
+                        </a>
+                        <div>IMDb Rating</div>
+                    </div>
+                </article>
+                
+                <article class="movie-section">
+                    <h2 class="movie-title">Avengers: Infinity War (2018)</h2>
+                    
+                    <div class="movie-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Director:</span> Anthony Russo / Joe Russo
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Runtime:</span> 149 minutes
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Release:</span> April 27, 2018 (USA)
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genre:</span> Action/Sci-Fi/Adventure
+                        </div>
+                    </div>
+                    
+                    <div class="movie-info">
+                        <div class="info-row"><strong>IMDb Rating:</strong> 8.4/10 (1.3M votes)</div>
+                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt4154756/" target="_blank" style="color: #0066cc; text-decoration: none;">tt4154756</a></div>
+                    </div>
+                    
+                    <div class="plot-summary">
+                        Thor and his team are the first to encounter Thanos' army, suffering devastating losses as Loki dies and the Space Stone falls into Thanos' hands. Soon, Thanos' advance forces arrive on Earth, engaging in battle and capturing Doctor Strange after a fierce fight. An epic battle that will determine the fate of the entire universe unfolds, as superheroes fight relentlessly for ordinary yet free lives in their ultimate confrontation with Thanos.
+                    </div>
+                    
+                    <div class="cast-section">
+                        <h3 class="cast-title">Main Cast</h3>
+                        <div class="cast-grid">
+                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
+                            <div class="cast-item">• Chris Evans as Captain America</div>
+                            <div class="cast-item">• Chris Hemsworth as Thor</div>
+                            <div class="cast-item">• Josh Brolin as Thanos</div>
+                            <div class="cast-item">• Benedict Cumberbatch as Doctor Strange</div>
+                            <div class="cast-item">• Tom Holland as Spider-Man</div>
+                            <div class="cast-item">• Chadwick Boseman as Black Panther</div>
+                            <div class="cast-item">• Elizabeth Olsen as Scarlet Witch</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-box">
+                        <a href="https://www.imdb.com/title/tt4154756/" target="_blank" class="rating-link">
+                            <div class="rating-score">8.4</div>
+                        </a>
+                        <div>IMDb Rating</div>
+                    </div>
+                </article>
+                
+                <article class="movie-section">
+                    <h2 class="movie-title">Avengers: Endgame (2019)</h2>
+                    
+                    <div class="movie-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Director:</span> Anthony Russo / Joe Russo
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Runtime:</span> 181 minutes
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Release:</span> April 26, 2019 (USA)
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Genre:</span> Drama/Action/Sci-Fi/Adventure
+                        </div>
+                    </div>
+                    
+                    <div class="movie-info">
+                        <div class="info-row"><strong>IMDb Rating:</strong> 8.4/10 (1.4M votes)</div>
+                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt4154796/" target="_blank" style="color: #0066cc; text-decoration: none;">tt4154796</a></div>
+                    </div>
+                    
+                    <div class="plot-summary">
+                        A snap of fingers, and half of all life in the universe turns to dust. The nearly despairing Avengers find Thanos' hideout with Captain Marvel's help, only to learn that all six Infinity Stones have been destroyed, crushing their final hope. Five years later, Ant-Man, lost in the Quantum Realm, accidentally returns to the real world, his appearance reigniting hope for the surviving Avengers. A final battle destined for the history books unfolds as superheroes fight relentlessly for their beliefs.
+                    </div>
+                    
+                    <div class="cast-section">
+                        <h3 class="cast-title">Main Cast</h3>
+                        <div class="cast-grid">
+                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
+                            <div class="cast-item">• Chris Evans as Captain America</div>
+                            <div class="cast-item">• Chris Hemsworth as Thor</div>
+                            <div class="cast-item">• Mark Ruffalo as Hulk</div>
+                            <div class="cast-item">• Scarlett Johansson as Black Widow</div>
+                            <div class="cast-item">• Jeremy Renner as Hawkeye</div>
+                            <div class="cast-item">• Brie Larson as Captain Marvel</div>
+                            <div class="cast-item">• Paul Rudd as Ant-Man</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-box">
+                        <a href="https://www.imdb.com/title/tt4154796/" target="_blank" class="rating-link">
+                            <div class="rating-score">8.4</div>
+                        </a>
+                        <div>IMDb Rating</div>
+                    </div>
+                </article>
+                
+                <div class="article-end">
+                    ◆ ◆ ◆ END OF SERIES ◆ ◆ ◆
+                </div>
+            </main>
             
-            <div class="content">
-                <!-- Logo -->
-                <div class="logo">TIME VARIANCE AUTHORITY</div>
-                <div class="subtitle">Guardians of the Sacred Timeline</div>
-                
-                <!-- Warning -->
-                <div class="warning">
-                    ⚠️ WARNING: Unauthorized time travel detected ⚠️
-                </div>
-                
-                <!-- Main Information -->
-                <div class="info-section">
-                    <div class="info-title">About TVA</div>
-                    <div class="info-text">
-                        The Time Variance Authority is a mysterious organization dedicated to maintaining the stability of the multiverse timeline.
-                    </div>
-                    <div class="info-text">
-                        Under the leadership of the Time-Keepers, TVA ensures the integrity of the Sacred Timeline and prevents the recurrence of multiverse wars.
-                    </div>
-                </div>
-                
-                <!-- Statistics -->
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-label">Established</div>
-                        <div class="stat-value">1986</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Headquarters</div>
-                        <div class="stat-value">Beyond Time</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Leadership</div>
-                        <div class="stat-value">Time-Keepers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">First Appearance</div>
-                        <div class="stat-value">Thor #371</div>
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Series Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Films</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">Years</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">6.14M+</div>
+                            <div class="stat-label">Total Reviews</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8.0</div>
+                            <div class="stat-label">Avg IMDb</div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Additional Information -->
-                <div class="additional-info">
-                    <div class="additional-title">TVA Operations</div>
-                    <div class="additional-text">
-                        TVA employs advanced temporal technology and specialized agents to monitor and maintain timeline stability across all realities.
-                    </div>
-                    <div class="features-list">
-                        <div class="feature-item">• Temporal Reset Devices</div>
-                        <div class="feature-item">• Timeline Monitoring</div>
-                        <div class="feature-item">• Reality Verification</div>
-                        <div class="feature-item">• Multiverse Protection</div>
-                    </div>
-                    <div class="additional-text">
-                        Our mission is to prevent catastrophic timeline events and ensure the Sacred Timeline remains undisturbed by unauthorized temporal activities.
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Director Changes</h3>
+                    <p><strong>Joss Whedon</strong> directed the first two Avengers films, known for his witty dialogue and character interactions.</p>
+                    <p><strong>The Russo Brothers</strong> (Anthony & Joe Russo) took over the latter two films, bringing a more epic and emotional storytelling style.</p>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Marvel Cinematic Universe</h3>
+                    <p>The Avengers series forms the core of Phase Three of the Marvel Cinematic Universe, known as the "Infinity Saga," perfectly concluding the storylines of 22 films.</p>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Box Office Success</h3>
+                    <div style="font-size: 0.9em; line-height: 1.4;">
+                        <p><strong>Avengers: Endgame</strong><br>
+                        Worldwide: $2.798 Billion<br>
+                        All-time Rank: #5</p>
+                        
+                        <p><strong>Avengers: Infinity War</strong><br>
+                        Worldwide: $2.048 Billion<br>
+                        All-time Rank: #6</p>
                     </div>
                 </div>
                 
-                <!-- Control Knobs -->
-                <div class="controls">
-                    <div>
-                        <div class="control-knob"></div>
-                        <div class="control-label">Time Adjust</div>
-                    </div>
-                    <div>
-                        <div class="control-knob"></div>
-                        <div class="control-label">Power Level</div>
-                    </div>
-                    <div>
-                        <div class="control-knob"></div>
-                        <div class="control-label">Alert Status</div>
-                    </div>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Awards & Recognition</h3>
+                    <ul style="font-size: 0.85em; padding-left: 15px;">
+                        <li>Multiple Oscar Visual Effects Nominations</li>
+                        <li>BAFTA Best Special Visual Effects</li>
+                        <li>MTV Movie Award - Movie of the Year</li>
+                        <li>Teen Choice Award - Best Sci-Fi Movie</li>
+                    </ul>
                 </div>
-                
-                <!-- IMDb Link -->
-                <div class="imdb-link">
-                    <a href="https://www.imdb.com/title/tt9140554/" target="_blank" rel="noopener noreferrer">
-                        🎬 LOKI (2021) on IMDb
-                    </a>
-                </div>
-            </div>
-            
-            <div class="watermark">MARVEL TVA 2025</div>
+            </aside>
         </div>
+        
+        <footer class="footer">
+            <p>&copy; 2025 The Daily Chronicle. All Rights Reserved.</p>
+            <p>Published in New York • Circulation: 500,000 Daily</p>
+        </footer>
     </div>
-
-    <script>
-        // Only button hover effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const knobs = document.querySelectorAll('.control-knob');
-            
-            knobs.forEach(knob => {
-                knob.addEventListener('click', function() {
-                    // Simple click effect
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 150);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
