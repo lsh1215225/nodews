@@ -3,624 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superhero Alliance: Avengers Series Review | 1980s News</title>
+    <title>The Galactic Gazette - The Hitchhiker's Guide to the Galaxy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Georgia:wght@400;700;900&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Crimson Text', 'Georgia', serif;
-            background-color: #f8f8f8;
-            background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.01) 2px, rgba(0,0,0,.01) 4px),
-                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.01) 2px, rgba(0,0,0,.01) 4px);
-            color: #000;
-            line-height: 1.4;
+            font-family: 'Old Standard TT', serif;
+            background-color: #F4F1EA;
+            color: #1A1A1A;
+            line-height: 1.6;
+            font-size: 18px;
         }
-        
-        .newspaper {
+
+        .container {
             max-width: 1200px;
-            margin: 20px auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border: 2px solid #333;
+            margin: 0 auto;
+            background-color: #F4F1EA;
+            border: 1px solid #1A1A1A;
         }
-        
-        .header {
+
+        /* Masthead Styles */
+        .masthead {
             text-align: center;
-            padding: 20px;
-            border-bottom: 3px double #333;
-            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-bottom: 1px solid #1A1A1A;
+            padding: 16px;
         }
-        
-        .newspaper-title {
-            font-family: 'Georgia', serif;
-            font-size: 3.5em;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 0px #ccc;
-            color: #000;
+
+        .masthead-top {
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            color: #4A4A4A;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
         }
-        
-        .newspaper-subtitle {
-            font-family: 'Crimson Text', serif;
-            font-size: 1.2em;
-            font-style: italic;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .date-line {
-            font-family: 'Crimson Text', serif;
-            font-size: 1.1em;
-            font-weight: 600;
-            border: 1px solid #333;
-            padding: 5px 15px;
-            display: inline-block;
-            background: #f5f5f5;
-        }
-        
-        .nav-bar {
-            background: #333;
-            color: white;
-            padding: 8px 0;
-            text-align: center;
-            font-family: 'Crimson Text', serif;
-            font-weight: bold;
+
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 96px;
+            font-weight: 400;
+            margin: 24px 0;
             letter-spacing: 2px;
         }
-        
-        .nav-bar span {
-            margin: 0 20px;
-            font-size: 0.9em;
+
+        .masthead-bottom {
+            border-bottom: 4px double #1A1A1A;
+            margin-top: 24px;
         }
-        
-        .content {
+
+        /* Layout Grid */
+        .main-layout {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            padding: 20px;
+            gap: 0;
+            min-height: 80vh;
         }
-        
+
         .main-content {
-            border-right: 2px solid #ccc;
-            padding-right: 20px;
+            padding: 48px;
+            border-right: 1px solid #1A1A1A;
         }
-        
+
         .sidebar {
-            padding-left: 20px;
+            padding: 48px 32px;
+            background-color: #EAE6DD;
         }
-        
-        .main-headline {
-            font-family: 'Georgia', serif;
-            font-size: 2.5em;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            border-bottom: 4px solid #333;
-            padding-bottom: 10px;
-            color: #000;
+
+        /* Article Styles */
+        .lead-article {
+            margin-bottom: 48px;
         }
-        
-        .sub-headline {
-            font-family: 'Georgia', serif;
-            font-size: 1.8em;
+
+        .article-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
             font-weight: 700;
-            margin: 25px 0 15px 0;
-            color: #000;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #2C3E50;
+        }
+
+        .article-meta {
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+            border-top: 1px solid #1A1A1A;
+            border-bottom: 1px solid #1A1A1A;
+            padding: 12px;
+            margin-bottom: 32px;
+        }
+
+        .article-body {
+            column-count: 2;
+            column-gap: 32px;
+            text-align: justify;
+        }
+
+        .article-body p {
+            margin-bottom: 16px;
+        }
+
+        .article-body p:first-child::first-letter {
+            font-size: 300%;
+            font-weight: 700;
+            float: left;
+            line-height: 0.8;
+            margin-right: 8px;
+            margin-top: 4px;
+        }
+
+        /* Sidebar Styles */
+        .dont-panic-box {
+            background-color: #C0392B;
+            color: #F4F1EA;
+            border: 2px solid #1A1A1A;
+            padding: 32px;
+            text-align: center;
+            transform: rotate(-2deg);
+            margin-bottom: 32px;
+            box-shadow: 4px 4px 0px #1A1A1A;
+        }
+
+        .dont-panic-text {
+            font-family: 'Courier Prime', monospace;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .publication-data {
+            margin-bottom: 32px;
+        }
+
+        .publication-title {
+            font-family: 'Old Standard TT', serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: underline;
+            margin-bottom: 16px;
+        }
+
+        .publication-list {
+            font-family: 'Courier Prime', monospace;
+            list-style: none;
+            line-height: 1.8;
+        }
+
+        .publication-list li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section {
+            margin-bottom: 32px;
+        }
+
+        .guide-section h3 {
+            font-family: 'Old Standard TT', serif;
+            font-size: 24px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #1A1A1A;
+            padding-bottom: 8px;
         }
-        
-        .movie-section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 2px solid #333;
-            background: #fafafa;
-            page-break-inside: avoid;
+
+        /* Classifieds Footer */
+        .classifieds {
+            background-color: #EAE6DD;
+            border-top: 4px double #1A1A1A;
+            padding: 32px 48px;
+            margin-top: 48px;
         }
-        
-        .movie-title {
-            font-family: 'Georgia', serif;
-            font-size: 2.2em;
-            font-weight: 900;
-            color: #cc0000;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-align: center;
-            border: 2px solid #cc0000;
-            padding: 10px;
-            background: #fff;
-        }
-        
-        .movie-meta {
+
+        .classifieds-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 15px 0;
-            font-size: 0.95em;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
-        
-        .meta-item {
-            background: #f0f0f0;
-            padding: 8px;
-            border-left: 3px solid #333;
+
+        .classified-item {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            line-height: 1.4;
         }
-        
-        .meta-label {
-            font-family: 'Crimson Text', serif;
-            font-weight: 600;
-            color: #333;
+
+        .classified-item strong {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
         }
-        
-        .movie-info {
-            margin: 15px 0;
-        }
-        
-        .info-row {
-            margin-bottom: 8px;
-            padding-left: 15px;
-            border-left: 2px solid #ccc;
-            font-family: 'Crimson Text', serif;
-        }
-        
-        .cast-section {
-            background: #f8f8f8;
-            padding: 15px;
-            margin: 15px 0;
-            border: 1px solid #333;
-        }
-        
-        .cast-title {
-            font-family: 'Georgia', serif;
-            font-size: 1.3em;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            color: #000;
-        }
-        
-        .cast-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            font-size: 0.9em;
-            font-family: 'Crimson Text', serif;
-        }
-        
-        .cast-item {
-            padding: 3px 0;
-        }
-        
-        .rating-box {
-            background: #000;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            margin: 15px 0;
-        }
-        
-        .rating-score {
-            font-family: 'Georgia', serif;
-            font-size: 2.5em;
-            font-weight: 900;
-            color: #ffd700;
-        }
-        
-        .rating-link {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .rating-link:hover .rating-score {
-            color: #ffed4e;
-            text-shadow: 0 0 10px rgba(255, 237, 78, 0.5);
-        }
-        
-        .rating-link:hover + div {
-            color: #ffed4e;
-        }
-        
-        .plot-summary {
-            background: #f5f5f5;
-            padding: 15px;
-            border: 1px solid #333;
-            font-style: italic;
-            margin: 15px 0;
-            line-height: 1.6;
-            font-family: 'Crimson Text', serif;
-            font-size: 1.05em;
-        }
-        
-        .sidebar-section {
-            background: #f0f0f0;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #333;
-        }
-        
-        .sidebar-title {
-            font-family: 'Georgia', serif;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            color: #cc0000;
-            border-bottom: 2px solid #cc0000;
-            padding-bottom: 5px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .stat-item {
-            background: white;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        
-        .stat-number {
-            font-family: 'Georgia', serif;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #cc0000;
-        }
-        
-        .stat-label {
-            font-family: 'Crimson Text', serif;
-            font-size: 0.8em;
-            color: #666;
-        }
-        
-        .footer {
-            background: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            border-top: 3px solid #000;
-            font-family: 'Crimson Text', serif;
-        }
-        
-        .article-end {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #666;
-            font-family: 'Georgia', serif;
-        }
-        
-        @media print {
-            body {
-                background: white;
-            }
-            .newspaper {
-                box-shadow: none;
-                border: 1px solid #000;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .content {
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-layout {
                 grid-template-columns: 1fr;
             }
+            
             .main-content {
                 border-right: none;
-                padding-right: 0;
+                border-bottom: 1px solid #1A1A1A;
             }
+            
+            .article-body {
+                column-count: 1;
+            }
+            
+            .classifieds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .masthead-title {
+                font-size: 48px;
+            }
+            
+            .article-headline {
+                font-size: 32px;
+            }
+            
+            .main-content,
             .sidebar {
-                padding-left: 0;
+                padding: 24px 16px;
             }
-            .newspaper-title {
-                font-size: 2.5em;
-            }
-            .movie-meta {
+            
+            .classifieds-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .dont-panic-box {
+                transform: none;
+            }
+        }
+
+        /* Links */
+        a {
+            color: #1A1A1A;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            background-color: #1A1A1A;
+            color: #F4F1EA;
+            transition: none;
         }
     </style>
 </head>
 <body>
-    <div class="newspaper">
-        <header class="header">
-            <h1 class="newspaper-title">The Daily Chronicle</h1>
-            <p class="newspaper-subtitle">Established 1985 • Your Source for Heroic News</p>
-            <div class="date-line">MONDAY, DECEMBER 16, 2025</div>
+    <div class="container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>Thursday, Arthur Dent's Terrible Day</span>
+                <span>Price: 42 Altarian Dollars</span>
+                <span>Location: Sector ZZ9 Plural Z Alpha</span>
+            </div>
+            <h1 class="masthead-title">THE GALACTIC GAZETTE</h1>
+            <div class="masthead-bottom"></div>
         </header>
-        
-        <nav class="nav-bar">
-            <span>HOME</span>
-            <span>ENTERTAINMENT</span>
-            <span>MOVIES</span>
-            <span>COMICS</span>
-            <span>SPECIAL FEATURES</span>
-        </nav>
-        
-        <div class="content">
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Main Content -->
             <main class="main-content">
-                <h1 class="main-headline">Avengers Series: Milestones of the Superhero Era</h1>
-                
-                <article class="movie-section">
-                    <h2 class="movie-title">The Avengers (2012)</h2>
-                    
-                    <div class="movie-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Director:</span> Joss Whedon
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Runtime:</span> 142 minutes
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Release:</span> May 4, 2012 (USA)
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Genre:</span> Action/Sci-Fi/Adventure
-                        </div>
+                <!-- Lead Article -->
+                <article class="lead-article">
+                    <h2 class="article-headline">EARTH DEMOLISHED! Local Residents Not Notified</h2>
+                    <div class="article-meta">
+                        By Ford Prefect | Galactic Researcher
                     </div>
-                    
-                    <div class="movie-info">
-                        <div class="info-row"><strong>IMDb Rating:</strong> 8.0/10 (1.5M votes)</div>
-                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt0848228/" target="_blank" style="color: #0066cc; text-decoration: none;">tt0848228</a></div>
-                        <div class="info-row"><strong>Studio:</strong> Marvel Studios</div>
-                    </div>
-                    
-                    <div class="plot-summary">
-                        A powerful and unforeseen evil force emerges, posing a lethal threat to Earth that no single superhero can withstand. S.H.I.E.L.D., the organization dedicated to protecting global security, finds itself overwhelmed. Their commander, Nick Fury "The Eye" Fury, realizes he must create the "strongest alliance" in history, gathering heroes from all walks of life to save the world from destruction and combat the forces of darkness.
-                    </div>
-                    
-                    <div class="cast-section">
-                        <h3 class="cast-title">Main Cast</h3>
-                        <div class="cast-grid">
-                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
-                            <div class="cast-item">• Chris Evans as Captain America</div>
-                            <div class="cast-item">• Chris Hemsworth as Thor</div>
-                            <div class="cast-item">• Scarlett Johansson as Black Widow</div>
-                            <div class="cast-item">• Jeremy Renner as Hawkeye</div>
-                            <div class="cast-item">• Mark Ruffalo as Hulk</div>
-                            <div class="cast-item">• Samuel L. Jackson as Nick Fury</div>
-                            <div class="cast-item">• Tom Hiddleston as Loki</div>
-                        </div>
-                    </div>
-                    
-                    <div class="rating-box">
-                        <a href="https://www.imdb.com/title/tt0848228/" target="_blank" class="rating-link">
-                            <div class="rating-score">8.0</div>
-                        </a>
-                        <div>IMDb Rating</div>
-                    </div>
-                </article>
-                
-                <h2 class="sub-headline">Sequels Continue the Legend</h2>
-                
-                <article class="movie-section">
-                    <h2 class="movie-title">Avengers: Age of Ultron (2015)</h2>
-                    
-                    <div class="movie-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Director:</span> Joss Whedon
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Runtime:</span> 142 minutes
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Release:</span> May 1, 2015 (USA)
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Genre:</span> Action/Sci-Fi/Adventure
-                        </div>
-                    </div>
-                    
-                    <div class="movie-info">
-                        <div class="info-row"><strong>IMDb Rating:</strong> 7.3/10 (983K votes)</div>
-                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt2395427/" target="_blank" style="color: #0066cc; text-decoration: none;">tt2395427</a></div>
-                    </div>
-                    
-                    <div class="plot-summary">
-                        Tony Stark attempts to restart a defunct peacekeeping project, which becomes the catalyst for a new crisis. The mysterious villain Ultron emerges, forcing the Avengers to reunite and work together to prevent Ultron's plan for human extinction. During the battle, the Avengers encounter two new characters - Wanda Maximoff (Scarlet Witch) and Pietro Maximoff (Quicksilver) - and welcome back an old friend in a new form: Vision.
-                    </div>
-                    
-                    <div class="cast-section">
-                        <h3 class="cast-title">Main Cast</h3>
-                        <div class="cast-grid">
-                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
-                            <div class="cast-item">• Chris Evans as Captain America</div>
-                            <div class="cast-item">• Chris Hemsworth as Thor</div>
-                            <div class="cast-item">• Mark Ruffalo as Hulk</div>
-                            <div class="cast-item">• Scarlett Johansson as Black Widow</div>
-                            <div class="cast-item">• Jeremy Renner as Hawkeye</div>
-                            <div class="cast-item">• Elizabeth Olsen as Scarlet Witch</div>
-                            <div class="cast-item">• Paul Bettany as Vision</div>
-                        </div>
-                    </div>
-                    
-                    <div class="rating-box">
-                        <a href="https://www.imdb.com/title/tt2395427/" target="_blank" class="rating-link">
-                            <div class="rating-score">7.3</div>
-                        </a>
-                        <div>IMDb Rating</div>
-                    </div>
-                </article>
-                
-                <article class="movie-section">
-                    <h2 class="movie-title">Avengers: Infinity War (2018)</h2>
-                    
-                    <div class="movie-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Director:</span> Anthony Russo / Joe Russo
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Runtime:</span> 149 minutes
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Release:</span> April 27, 2018 (USA)
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Genre:</span> Action/Sci-Fi/Adventure
-                        </div>
-                    </div>
-                    
-                    <div class="movie-info">
-                        <div class="info-row"><strong>IMDb Rating:</strong> 8.4/10 (1.3M votes)</div>
-                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt4154756/" target="_blank" style="color: #0066cc; text-decoration: none;">tt4154756</a></div>
-                    </div>
-                    
-                    <div class="plot-summary">
-                        Thor and his team are the first to encounter Thanos' army, suffering devastating losses as Loki dies and the Space Stone falls into Thanos' hands. Soon, Thanos' advance forces arrive on Earth, engaging in battle and capturing Doctor Strange after a fierce fight. An epic battle that will determine the fate of the entire universe unfolds, as superheroes fight relentlessly for ordinary yet free lives in their ultimate confrontation with Thanos.
-                    </div>
-                    
-                    <div class="cast-section">
-                        <h3 class="cast-title">Main Cast</h3>
-                        <div class="cast-grid">
-                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
-                            <div class="cast-item">• Chris Evans as Captain America</div>
-                            <div class="cast-item">• Chris Hemsworth as Thor</div>
-                            <div class="cast-item">• Josh Brolin as Thanos</div>
-                            <div class="cast-item">• Benedict Cumberbatch as Doctor Strange</div>
-                            <div class="cast-item">• Tom Holland as Spider-Man</div>
-                            <div class="cast-item">• Chadwick Boseman as Black Panther</div>
-                            <div class="cast-item">• Elizabeth Olsen as Scarlet Witch</div>
-                        </div>
-                    </div>
-                    
-                    <div class="rating-box">
-                        <a href="https://www.imdb.com/title/tt4154756/" target="_blank" class="rating-link">
-                            <div class="rating-score">8.4</div>
-                        </a>
-                        <div>IMDb Rating</div>
-                    </div>
-                </article>
-                
-                <article class="movie-section">
-                    <h2 class="movie-title">Avengers: Endgame (2019)</h2>
-                    
-                    <div class="movie-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Director:</span> Anthony Russo / Joe Russo
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Runtime:</span> 181 minutes
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Release:</span> April 26, 2019 (USA)
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Genre:</span> Drama/Action/Sci-Fi/Adventure
-                        </div>
-                    </div>
-                    
-                    <div class="movie-info">
-                        <div class="info-row"><strong>IMDb Rating:</strong> 8.4/10 (1.4M votes)</div>
-                        <div class="info-row"><strong>IMDb ID:</strong> <a href="https://www.imdb.com/title/tt4154796/" target="_blank" style="color: #0066cc; text-decoration: none;">tt4154796</a></div>
-                    </div>
-                    
-                    <div class="plot-summary">
-                        A snap of fingers, and half of all life in the universe turns to dust. The nearly despairing Avengers find Thanos' hideout with Captain Marvel's help, only to learn that all six Infinity Stones have been destroyed, crushing their final hope. Five years later, Ant-Man, lost in the Quantum Realm, accidentally returns to the real world, his appearance reigniting hope for the surviving Avengers. A final battle destined for the history books unfolds as superheroes fight relentlessly for their beliefs.
-                    </div>
-                    
-                    <div class="cast-section">
-                        <h3 class="cast-title">Main Cast</h3>
-                        <div class="cast-grid">
-                            <div class="cast-item">• Robert Downey Jr. as Iron Man</div>
-                            <div class="cast-item">• Chris Evans as Captain America</div>
-                            <div class="cast-item">• Chris Hemsworth as Thor</div>
-                            <div class="cast-item">• Mark Ruffalo as Hulk</div>
-                            <div class="cast-item">• Scarlett Johansson as Black Widow</div>
-                            <div class="cast-item">• Jeremy Renner as Hawkeye</div>
-                            <div class="cast-item">• Brie Larson as Captain Marvel</div>
-                            <div class="cast-item">• Paul Rudd as Ant-Man</div>
-                        </div>
-                    </div>
-                    
-                    <div class="rating-box">
-                        <a href="https://www.imdb.com/title/tt4154796/" target="_blank" class="rating-link">
-                            <div class="rating-score">8.4</div>
-                        </a>
-                        <div>IMDb Rating</div>
-                    </div>
-                </article>
-                
-                <div class="article-end">
-                    ◆ ◆ ◆ END OF SERIES ◆ ◆ ◆
-                </div>
-            </main>
-            
-            <aside class="sidebar">
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Series Statistics</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">Films</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">7</div>
-                            <div class="stat-label">Years</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">6.14M+</div>
-                            <div class="stat-label">Total Reviews</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">8.0</div>
-                            <div class="stat-label">Avg IMDb</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Director Changes</h3>
-                    <p><strong>Joss Whedon</strong> directed the first two Avengers films, known for his witty dialogue and character interactions.</p>
-                    <p><strong>The Russo Brothers</strong> (Anthony & Joe Russo) took over the latter two films, bringing a more epic and emotional storytelling style.</p>
-                </div>
-                
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Marvel Cinematic Universe</h3>
-                    <p>The Avengers series forms the core of Phase Three of the Marvel Cinematic Universe, known as the "Infinity Saga," perfectly concluding the storylines of 22 films.</p>
-                </div>
-                
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Box Office Success</h3>
-                    <div style="font-size: 0.9em; line-height: 1.4;">
-                        <p><strong>Avengers: Endgame</strong><br>
-                        Worldwide: $2.798 Billion<br>
-                        All-time Rank: #5</p>
+                    <div class="article-body">
+                        <p>Early this morning, at four o'clock in the morning local time, Earth was completely demolished to make way for a hyperspace bypass in what can only be described as a regrettable administrative error. The demolition notice had been delivered to the local planetary administration department six months ago, but due to an address error, it was delivered to an abandoned furniture shop in South London instead.</p>
                         
-                        <p><strong>Avengers: Infinity War</strong><br>
-                        Worldwide: $2.048 Billion<br>
-                        All-time Rank: #6</p>
+                        <p>When asked for comment on the incident, a spokesperson for the Galactic Planning Commission stated: "We deeply regret this unfortunate mistake. We have arranged alternative accommodation for those affected. It's worth noting, however, that most of Earth's inhabitants had already left the planet before this incident occurred."</p>
+                        
+                        <p>Arthur Dent, the only surviving Earthling, recalls being sat outside his house, which was about to be demolished, protesting against local town planning. "I was sitting in front of the bulldozer trying to stop them from demolishing my house," said Mr. Dent, "and then I realized they were actually demolishing the entire planet. It really put things in perspective."</p>
+                        
+                        <p>Mr. Dent is now traveling across the galaxy with his alien friend Ford Prefect, who happens to be the spokesperson for an electronic book known as "The Hitchhiker's Guide to the Galaxy." The Guide is a comprehensive and somewhat unreliable travel manual to the galaxy, known for its accurate and practical advice – though occasionally marred by obvious errors and contradictory recommendations.</p>
+                        
+                        <p>According to reliable sources, Earth had been considered one of the most uninteresting planets in the galaxy before its demolition. This honor has now been transferred to a planet called "The Pit of Meaninglessness" on the edge of the galaxy, where the inhabitants do nothing but queue up for things, and they're very good at it.</p>
+                        
+                        <p>The Hitchhikers Guide to the Galaxy Company advises all residents to remain calm under all circumstances and remember the most important piece of advice: "DON'T PANIC." This phrase is printed on the cover of every Guide in large, friendly letters so that passengers can see it clearly even in moments of despair.</p>
                     </div>
+                </article>
+
+                <!-- Additional Articles -->
+                <article>
+                    <h2 class="article-headline">Galactic Presidential Candidate Promises Better Hyperspace Roads</h2>
+                    <div class="article-meta">
+                        By Trillian Astra | Political Correspondent
+                    </div>
+                    <div class="article-body">
+                        <p>In the upcoming Galactic Presidential election, leading candidate Zaphod Beeblebrox has promised to dramatically improve the galaxy's hyperspace road system if elected. "I'm fed up with seeing so many planets accidentally demolished due to faulty hyperspace planning," Mr. Beeblebrox stated in an interview. "We need a smarter system."</p>
+                        
+                        <p>His main opponent, former Galactic Transport Minister Cornelius Foulk, criticized Beeblebrox's plan as being too expensive. "We shouldn't be spending thousands of billions of Altarian dollars to solve what is essentially a relatively minor problem," said Mr. Foulk. "Most planets have plenty of time to relocate."</p>
+                        
+                        <p>The race remains tight, with many citizens still undecided about which candidate offers the best solution to the galaxy's ongoing transportation infrastructure problems. Polls indicate that voters are particularly concerned about the safety of hyperspace travel following the recent increase in planetary demolition incidents.</p>
+                    </div>
+                </article>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Don't Panic Box -->
+                <div class="dont-panic-box">
+                    <div class="dont-panic-text">DON'T PANIC</div>
                 </div>
-                
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Awards & Recognition</h3>
-                    <ul style="font-size: 0.85em; padding-left: 15px;">
-                        <li>Multiple Oscar Visual Effects Nominations</li>
-                        <li>BAFTA Best Special Visual Effects</li>
-                        <li>MTV Movie Award - Movie of the Year</li>
-                        <li>Teen Choice Award - Best Sci-Fi Movie</li>
+
+                <!-- Publication Data -->
+                <div class="publication-data">
+                    <h3 class="publication-title">Publication Data</h3>
+                    <ul class="publication-list">
+                        <li>Author: Douglas Adams</li>
+                        <li>First Published: 1979</li>
+                        <li>Genre: Science Fiction Comedy</li>
+                        <li>Series: Hitchhiker's Guide Series</li>
+                        <li>Publisher: Pan Galactic Publishers</li>
+                        <li>Sales: Over 15 million copies</li>
+                        <li>Languages: Translated into 50+</li>
+                        <li>Status: Cult Classic</li>
                     </ul>
+                </div>
+
+                <!-- The Guide Section -->
+                <div class="guide-section">
+                    <h3>About the Guide</h3>
+                    <p>"The Hitchhiker's Guide to the Galaxy" is more than just a book – it's one of the most important technological devices in the galaxy. The electronic edition of this guide contains detailed information about every planet, every civilization, and every tea shop in the galaxy.</p>
+                    
+                    <p>It is important to note that the first rule of the Guide is: "DON'T PANIC." This advice proves especially important when faced with the absurdity of the universe.</p>
+                    
+                    <p>Legend has it that this guide was written by a completely rational yet extremely pessimistic race known as the Vogons, who spent 7.5 million years figuring out the answer to the question of life, the universe, and everything. The answer: 42.</p>
+                </div>
+
+                <!-- Famous Quotes -->
+                <div class="guide-section">
+                    <h3>Famous Quotes</h3>
+                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
+                        "Don't Panic."
+                        <br><small>— The Hitchhiker's Guide to the Galaxy</small>
+                    </blockquote>
+                    
+                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
+                        "The universe is big. Really big. You just won't believe how vastly, hugely, mind-bogglingly big it is."
+                        <br><small>— Ford Prefect</small>
+                    </blockquote>
+                    
+                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
+                        "The answer is 42. But what was the question?"
+                        <br><small>— Deep Thought</small>
+                    </blockquote>
+                    
+                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
+                        "A towel is about the most massively useful thing an interstellar hitchhiker can have."
+                        <br><small>— Ford Prefect</small>
+                    </blockquote>
                 </div>
             </aside>
         </div>
-        
-        <footer class="footer">
-            <p>&copy; 2025 The Daily Chronicle. All Rights Reserved.</p>
-            <p>Published in New York • Circulation: 500,000 Daily</p>
+
+        <!-- Classifieds Footer -->
+        <footer class="classifieds">
+            <div class="classifieds-grid">
+                <div class="classified-item">
+                    <strong>VOGON POETRY LESSONS</strong>
+                    Professional instruction in the galaxy's most dreaded art form. Beginner classes only 5 Altarian dollars. No talent required – this course guarantees to make you worse.
+                </div>
+                <div class="classified-item">
+                    <strong>TOWEL EMPORIUM</strong>
+                    The most important item in the galaxy! Every size, color, and material available. Buy a towel, get a survival guide booklet FREE!
+                </div>
+                <div class="classified-item">
+                    <strong>HYPERSPACE ENGINE REPAIR</strong>
+                    Professional service for all types of hyperspace propulsion systems. 24-hour service, galaxy-wide pickup available. Satisfaction guaranteed or money back.
+                </div>
+                <div class="classified-item">
+                    <strong>ARTHUR DENT CONSULTING</strong>
+                    Galaxy survival advice from a former Earthling. Packages include: moral support, basic survival skills, local cultural guidance. Special offer this week!
+                </div>
+                <div class="classified-item">
+                    <strong>BABEL FISH RENTAL</strong>
+                    Instant translation device rental. Just insert into ear, understand any language! 2 Altarian dollars per hour, daily rates available.
+                </div>
+                <div class="classified-item">
+                    <strong>IMPOSSIBILITY DRIVE</strong>
+                    Make the impossible possible! Although we don't know how it works, it definitely works. Price: Only 500,000 Altarian dollars.
+                </div>
+                <div class="classified-item">
+                    <strong>HITCHHIKER'S GUIDE SUBSCRIPTION</strong>
+                    Latest edition with information on 99.97% of the galaxy. Regular updates, error corrections, affordable prices. Only 12 Altarian dollars per month.
+                </div>
+                <div class="classified-item">
+                    <strong>YELLOW SMALL CREATURE RESCUE</strong>
+                    Specialized care for small yellow creatures lost in hyperspace travel. We promise your creature will be safely returned home (or at least to a nice place).
+                </div>
+                <div class="classified-item">
+                    <strong>DEEP THOUGHT CONSULTING</strong>
+                    Get answers to life's biggest questions. 7.5 million years to respond. No question too big or too small. Special rates for cosmic inquiries.
+                </div>
+                <div class="classified-item">
+                    <strong>MARVIN THE PARANOID ANDROID REPAIRS</strong>
+                    Feeling depressed? Let Marvin fix your electronics while he complains about it. Rates negotiable. WARNING: May cause existential crisis.
+                </div>
+                <div class="classified-item">
+                    <strong>PAN GALACTIC GARGBLERS</strong>
+                    The galaxy's worst band. Now accepting bookings for parties, funerals, and unwanted alien invasions. Specializing in discordant harmonies and cosmic despair.
+                </div>
+                <div class="classified-item">
+                    <strong>SLEEPING ZAPHOD</strong>
+                    Need a quiet place? Our hotel specializes in two-headed guests. Breakfast included. Please wake the management carefully – they may be slightly paranoid.
+                </div>
+            </div>
         </footer>
     </div>
 </body>
