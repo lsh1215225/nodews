@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Galactic Gazette - The Hitchhiker's Guide to the Galaxy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <title>Star Wars Movie Timeline | A Long Time Ago in a Galaxy Far, Far Away</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,417 +15,872 @@
         }
 
         body {
-            font-family: 'Old Standard TT', serif;
-            background-color: #F4F1EA;
-            color: #1A1A1A;
-            line-height: 1.6;
-            font-size: 18px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #000000 0%, #0a0a1a 50%, #000000 100%);
+            color: #e8e8e8;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Star field background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 160px 120px, #fff, transparent),
+                radial-gradient(2px 2px at 200px 50px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 250px 160px, #fff, transparent),
+                radial-gradient(2px 2px at 300px 100px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 350px 200px, #fff, transparent),
+                radial-gradient(2px 2px at 400px 150px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 450px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 500px 250px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 550px 180px, #fff, transparent),
+                radial-gradient(2px 2px at 600px 120px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 650px 300px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 700px 350px;
+            animation: twinkle 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Additional stars layer */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(1px 1px at 75px 125px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 275px 275px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 175px 325px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 375px 225px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1px 1px at 475px 75px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(2px 2px at 575px 175px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 625px 275px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 125px 375px, rgba(255,255,255,0.7), transparent);
+            background-repeat: repeat;
+            background-size: 700px 350px;
+            animation: twinkle 12s ease-in-out infinite alternate-reverse;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: #F4F1EA;
-            border: 1px solid #1A1A1A;
+            padding: 40px 20px;
         }
 
-        /* Masthead Styles */
-        .masthead {
+        /* Header */
+        header {
             text-align: center;
-            border-bottom: 1px solid #1A1A1A;
-            padding: 16px;
+            margin-bottom: 60px;
+            padding: 60px 20px;
+            border-bottom: 1px solid rgba(255, 232, 31, 0.3);
         }
 
-        .masthead-top {
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            color: #4A4A4A;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .masthead-title {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 96px;
-            font-weight: 400;
-            margin: 24px 0;
-            letter-spacing: 2px;
-        }
-
-        .masthead-bottom {
-            border-bottom: 4px double #1A1A1A;
-            margin-top: 24px;
-        }
-
-        /* Layout Grid */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 0;
-            min-height: 80vh;
-        }
-
-        .main-content {
-            padding: 48px;
-            border-right: 1px solid #1A1A1A;
-        }
-
-        .sidebar {
-            padding: 48px 32px;
-            background-color: #EAE6DD;
-        }
-
-        /* Article Styles */
-        .lead-article {
-            margin-bottom: 48px;
-        }
-
-        .article-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
+        .star-wars-logo {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 700;
-            text-align: center;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: #2C3E50;
-        }
-
-        .article-meta {
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            font-style: italic;
-            text-align: center;
-            border-top: 1px solid #1A1A1A;
-            border-bottom: 1px solid #1A1A1A;
-            padding: 12px;
-            margin-bottom: 32px;
-        }
-
-        .article-body {
-            column-count: 2;
-            column-gap: 32px;
-            text-align: justify;
-        }
-
-        .article-body p {
-            margin-bottom: 16px;
-        }
-
-        .article-body p:first-child::first-letter {
-            font-size: 300%;
-            font-weight: 700;
-            float: left;
-            line-height: 0.8;
-            margin-right: 8px;
-            margin-top: 4px;
-        }
-
-        /* Sidebar Styles */
-        .dont-panic-box {
-            background-color: #C0392B;
-            color: #F4F1EA;
-            border: 2px solid #1A1A1A;
-            padding: 32px;
-            text-align: center;
-            transform: rotate(-2deg);
-            margin-bottom: 32px;
-            box-shadow: 4px 4px 0px #1A1A1A;
-        }
-
-        .dont-panic-text {
-            font-family: 'Courier Prime', monospace;
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .publication-data {
-            margin-bottom: 32px;
-        }
-
-        .publication-title {
-            font-family: 'Old Standard TT', serif;
-            font-size: 18px;
-            font-weight: 700;
+            color: #FFE81F;
             text-transform: uppercase;
-            text-decoration: underline;
-            margin-bottom: 16px;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(255, 232, 31, 0.5),
+                         0 0 80px rgba(255, 232, 31, 0.3);
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
-        .publication-list {
-            font-family: 'Courier Prime', monospace;
-            list-style: none;
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 40px rgba(255, 232, 31, 0.5),
+                             0 0 80px rgba(255, 232, 31, 0.3);
+            }
+            to {
+                text-shadow: 0 0 60px rgba(255, 232, 31, 0.7),
+                             0 0 100px rgba(255, 232, 31, 0.5),
+                             0 0 140px rgba(255, 232, 31, 0.3);
+            }
+        }
+
+        .intro-text {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+
+        /* Navigation Tabs */
+        .timeline-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .tab-btn {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: 1.1rem;
+            padding: 15px 35px;
+            background: transparent;
+            border: 1px solid rgba(255, 232, 31, 0.4);
+            color: #e8e8e8;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 232, 31, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tab-btn:hover::before {
+            left: 100%;
+        }
+
+        .tab-btn:hover {
+            border-color: #FFE81F;
+            color: #FFE81F;
+            box-shadow: 0 0 30px rgba(255, 232, 31, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .tab-btn.active {
+            background: #FFE81F;
+            border-color: #FFE81F;
+            color: #000000;
+            box-shadow: 0 0 40px rgba(255, 232, 31, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Movie Content */
+        .timeline-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .timeline-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: 2.5rem;
+            color: #FFE81F;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFE81F, transparent);
+            margin: 25px auto 0;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .movie-card {
+            background: rgba(20, 20, 35, 0.85);
+            border: 1px solid rgba(255, 232, 31, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+            transition: opacity 0.4s ease;
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        .movie-card:hover::before {
+            opacity: 0.25;
+        }
+
+        .movie-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFE81F, #FFD700, #FFE81F);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 232, 31, 0.5);
+            box-shadow: 0 20px 60px rgba(255, 232, 31, 0.2);
+        }
+
+        .movie-card:hover::before {
+            opacity: 1;
+        }
+
+        .movie-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: 0;
+            transition: opacity 0.4s ease;
+            filter: grayscale(100%) contrast(1.2) brightness(0.8);
+            pointer-events: none;
+        }
+
+        .movie-card:hover::after {
+            opacity: 0.35;
+        }
+
+        .movie-card.episode-1::after {
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg');
+        }
+
+        .movie-card.episode-2::after {
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/3/32/Star_Wars_-_Episode_II_Attack_of_the_Clones_%28movie_poster%29.jpg');
+        }
+
+        .movie-card.episode-3::after {
+            background-image: url('https://image.tmdb.org/t/p/original/z2ljlghKN3wnBmGO15j4VEpwfqq.jpg');
+        }
+
+        .movie-card.episode-3 .movie-poster-image {
+            background: none;
+        }
+
+        .movie-card.episode-5::after {
+            background-image: url('https://image.tmdb.org/t/p/original/unc5VVWPNTJlZP9oGDgL1dCE1vL.jpg');
+        }
+
+        .movie-card.episode-4::after {
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg');
+        }
+
+        .movie-card.episode-5::after {
+            background-image: url('https://image.tmdb.org/t/p/original/unc5VVWPNTJlZP9oGDgL1dCE1vL.jpg');
+        }
+
+        .movie-card.episode-5 .movie-poster-image {
+            background: none;
+        }
+
+        .movie-card.episode-8::after {
+            background-image: url('https://image.tmdb.org/t/p/original/gFwcBuIaSaHNLE9fUPQTRJsoC6O.jpg');
+        }
+
+        .movie-card.episode-6::after {
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/b/b2/ReturnOfTheJediPoster1983.jpg');
+        }
+
+        .movie-card.episode-7::after {
+            background-image: url('https://image11.m1905.cn/uploadfile/2015/1105/thumb_9_222_222_20151105092738522759.jpg');
+        }
+
+        .movie-card.episode-7 .movie-poster-image {
+            background: none;
+        }
+
+        .movie-card.episode-8::after {
+            background-image: url('https://image.tmdb.org/t/p/original/gFwcBuIaSaHNLE9fUPQTRJsoC6O.jpg');
+        }
+
+        .movie-card.episode-8 .movie-poster-image {
+            background: none;
+        }
+
+        .movie-card.episode-9::after {
+            background-image: url('https://image.tmdb.org/t/p/original/tQ5gSCS4h1QygtDnwCoOYi3YIva.jpg');
+        }
+
+        .movie-card.episode-9::after {
+            background-image: url('https://image.tmdb.org/t/p/original/tQ5gSCS4h1QygtDnwCoOYi3YIva.jpg');
+        }
+
+        .movie-card.episode-9 .movie-poster-image {
+            background: none;
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .movie-poster-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            z-index: 0;
+        }
+
+        .movie-poster-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10, 10, 26, 0.3) 0%, rgba(10, 10, 26, 0.8) 50%, rgba(20, 20, 35, 0.95) 100%);
+            z-index: 1;
+        }
+
+        .movie-poster::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            animation: scanline 10s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes scanline {
+            from { transform: translateY(-50%); }
+            to { transform: translateY(50%); }
+        }
+
+        .poster-text {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(255, 232, 31, 0.3);
+            z-index: 1;
+            letter-spacing: 0.1em;
+        }
+
+        .poster-text::after {
+            content: '';
+            display: block;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0.5;
+        }
+
+        .movie-info {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(20, 20, 35, 0) 0%, rgba(20, 20, 35, 0.95) 30%);
+        }
+
+        .movie-episode {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 0.85rem;
+            color: #FFE81F;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .movie-title {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .movie-meta {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .movie-synopsis {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 1rem;
+            color: #c0c0c0;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .imdb-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #FFE81F;
+            text-decoration: none;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 232, 31, 0.5);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: transparent;
+            margin-top: auto;
+            line-height: 1;
+        }
+
+        .imdb-link:hover {
+            background: #FFE81F;
+            color: #000000;
+            box-shadow: 0 0 25px rgba(255, 232, 31, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 232, 31, 0.2);
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: 1.5rem;
+            color: #FFE81F;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 0.85rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
             line-height: 1.8;
         }
 
-        .publication-list li {
-            margin-bottom: 8px;
-        }
-
-        .guide-section {
-            margin-bottom: 32px;
-        }
-
-        .guide-section h3 {
-            font-family: 'Old Standard TT', serif;
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #1A1A1A;
-            padding-bottom: 8px;
-        }
-
-        /* Classifieds Footer */
-        .classifieds {
-            background-color: #EAE6DD;
-            border-top: 4px double #1A1A1A;
-            padding: 32px 48px;
-            margin-top: 48px;
-        }
-
-        .classifieds-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .classified-item {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-
-        .classified-item strong {
-            font-weight: 700;
-            display: block;
-            margin-bottom: 4px;
-        }
-
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-content {
-                border-right: none;
-                border-bottom: 1px solid #1A1A1A;
-            }
-            
-            .article-body {
-                column-count: 1;
-            }
-            
-            .classifieds-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         @media (max-width: 768px) {
-            .masthead-title {
-                font-size: 48px;
+            .container {
+                padding: 20px 15px;
             }
-            
-            .article-headline {
-                font-size: 32px;
+
+            header {
+                padding: 40px 15px;
+                margin-bottom: 40px;
             }
-            
-            .main-content,
-            .sidebar {
-                padding: 24px 16px;
+
+            .star-wars-logo {
+                letter-spacing: 0.15em;
             }
-            
-            .classifieds-grid {
+
+            .timeline-tabs {
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .movie-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 10px;
             }
-            
-            .dont-panic-box {
-                transform: none;
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .movie-info {
+                padding: 20px;
+            }
+
+            .movie-title {
+                font-size: 1.5rem;
             }
         }
 
-        /* Links */
-        a {
-            color: #1A1A1A;
-            text-decoration: underline;
-        }
+        @media (max-width: 480px) {
+            .star-wars-logo {
+                font-size: 2rem;
+            }
 
-        a:hover {
-            background-color: #1A1A1A;
-            color: #F4F1EA;
-            transition: none;
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+
+            .movie-poster {
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Masthead -->
-        <header class="masthead">
-            <div class="masthead-top">
-                <span>Thursday, Arthur Dent's Terrible Day</span>
-                <span>Price: 42 Altarian Dollars</span>
-                <span>Location: Sector ZZ9 Plural Z Alpha</span>
-            </div>
-            <h1 class="masthead-title">THE GALACTIC GAZETTE</h1>
-            <div class="masthead-bottom"></div>
+        <header>
+            <h1 class="star-wars-logo">STAR WARS</h1>
+            <p class="intro-text">"A long time ago in a galaxy far, far away..."</p>
         </header>
 
-        <!-- Main Layout -->
-        <div class="main-layout">
-            <!-- Main Content -->
-            <main class="main-content">
-                <!-- Lead Article -->
-                <article class="lead-article">
-                    <h2 class="article-headline">EARTH DEMOLISHED! Local Residents Not Notified</h2>
-                    <div class="article-meta">
-                        By Ford Prefect | Galactic Researcher
+        <nav class="timeline-tabs">
+            <button class="tab-btn active" data-tab="prequels">The Prequels</button>
+            <button class="tab-btn" data-tab="originals">The Originals</button>
+            <button class="tab-btn" data-tab="sequels">The Sequels</button>
+        </nav>
+
+        <!-- The Prequel Trilogy -->
+        <section id="prequels" class="timeline-section active">
+            <h2 class="section-title">THE PHANTOM MENACE ERA</h2>
+            <div class="movie-grid">
+                <article class="movie-card episode-1">
+                    <div class="movie-poster">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg" alt="The Phantom Menace" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE I</span>
                     </div>
-                    <div class="article-body">
-                        <p>Early this morning, at four o'clock in the morning local time, Earth was completely demolished to make way for a hyperspace bypass in what can only be described as a regrettable administrative error. The demolition notice had been delivered to the local planetary administration department six months ago, but due to an address error, it was delivered to an abandoned furniture shop in South London instead.</p>
-                        
-                        <p>When asked for comment on the incident, a spokesperson for the Galactic Planning Commission stated: "We deeply regret this unfortunate mistake. We have arranged alternative accommodation for those affected. It's worth noting, however, that most of Earth's inhabitants had already left the planet before this incident occurred."</p>
-                        
-                        <p>Arthur Dent, the only surviving Earthling, recalls being sat outside his house, which was about to be demolished, protesting against local town planning. "I was sitting in front of the bulldozer trying to stop them from demolishing my house," said Mr. Dent, "and then I realized they were actually demolishing the entire planet. It really put things in perspective."</p>
-                        
-                        <p>Mr. Dent is now traveling across the galaxy with his alien friend Ford Prefect, who happens to be the spokesperson for an electronic book known as "The Hitchhiker's Guide to the Galaxy." The Guide is a comprehensive and somewhat unreliable travel manual to the galaxy, known for its accurate and practical advice – though occasionally marred by obvious errors and contradictory recommendations.</p>
-                        
-                        <p>According to reliable sources, Earth had been considered one of the most uninteresting planets in the galaxy before its demolition. This honor has now been transferred to a planet called "The Pit of Meaninglessness" on the edge of the galaxy, where the inhabitants do nothing but queue up for things, and they're very good at it.</p>
-                        
-                        <p>The Hitchhikers Guide to the Galaxy Company advises all residents to remain calm under all circumstances and remember the most important piece of advice: "DON'T PANIC." This phrase is printed on the cover of every Guide in large, friendly letters so that passengers can see it clearly even in moments of despair.</p>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode I</p>
+                        <h3 class="movie-title">The Phantom Menace</h3>
+                        <p class="movie-meta">1999 • Directed by George Lucas</p>
+                        <p class="movie-synopsis">Two Jedi Knights embark on a mission to negotiate a trade dispute, but find themselves battling a mysterious dark force. Their journey leads them to discover a young boy with incredible potential, unaware that he holds the key to the galaxy's destiny.</p>
+                        <a href="https://www.imdb.com/title/tt0121765/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+
+                <article class="movie-card episode-2">
+                    <div class="movie-poster">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/3/32/Star_Wars_-_Episode_II_Attack_of_the_Clones_%28movie_poster%29.jpg" alt="Attack of the Clones" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE II</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode II</p>
+                        <h3 class="movie-title">Attack of the Clones</h3>
+                        <p class="movie-meta">2002 • Directed by George Lucas</p>
+                        <p class="movie-synopsis">Ten years after the events of The Phantom Menace, the galaxy stands on the brink of civil war. When an assassination attempt targets Senator Padmé Amidala, Anakin Skywalker is assigned to protect her, and their mission uncovers a growing Separatist movement threatening the Republic.</p>
+                        <a href="https://www.imdb.com/title/tt0121766/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
                     </div>
                 </article>
 
-                <!-- Additional Articles -->
-                <article>
-                    <h2 class="article-headline">Galactic Presidential Candidate Promises Better Hyperspace Roads</h2>
-                    <div class="article-meta">
-                        By Trillian Astra | Political Correspondent
+                <article class="movie-card episode-3">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/xfSAoBEm9MNBjmlNcDYLvLSMlnq.jpg" alt="Revenge of the Sith" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE III</span>
                     </div>
-                    <div class="article-body">
-                        <p>In the upcoming Galactic Presidential election, leading candidate Zaphod Beeblebrox has promised to dramatically improve the galaxy's hyperspace road system if elected. "I'm fed up with seeing so many planets accidentally demolished due to faulty hyperspace planning," Mr. Beeblebrox stated in an interview. "We need a smarter system."</p>
-                        
-                        <p>His main opponent, former Galactic Transport Minister Cornelius Foulk, criticized Beeblebrox's plan as being too expensive. "We shouldn't be spending thousands of billions of Altarian dollars to solve what is essentially a relatively minor problem," said Mr. Foulk. "Most planets have plenty of time to relocate."</p>
-                        
-                        <p>The race remains tight, with many citizens still undecided about which candidate offers the best solution to the galaxy's ongoing transportation infrastructure problems. Polls indicate that voters are particularly concerned about the safety of hyperspace travel following the recent increase in planetary demolition incidents.</p>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode III</p>
+                        <h3 class="movie-title">Revenge of the Sith</h3>
+                        <p class="movie-meta">2005 • Directed by George Lucas</p>
+                        <p class="movie-synopsis">The Clone Wars rage across the galaxy. As Obi-Wan pursues a new threat, Anakin is seduced by the dark side of the Force and transforms into Darth Vader. The fall of the Jedi Order and the rise of the Empire mark the tragic conclusion of the prequel trilogy.</p>
+                        <a href="https://www.imdb.com/title/tt0121767/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
                     </div>
                 </article>
-            </main>
-
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <!-- Don't Panic Box -->
-                <div class="dont-panic-box">
-                    <div class="dont-panic-text">DON'T PANIC</div>
-                </div>
-
-                <!-- Publication Data -->
-                <div class="publication-data">
-                    <h3 class="publication-title">Publication Data</h3>
-                    <ul class="publication-list">
-                        <li>Author: Douglas Adams</li>
-                        <li>First Published: 1979</li>
-                        <li>Genre: Science Fiction Comedy</li>
-                        <li>Series: Hitchhiker's Guide Series</li>
-                        <li>Publisher: Pan Galactic Publishers</li>
-                        <li>Sales: Over 15 million copies</li>
-                        <li>Languages: Translated into 50+</li>
-                        <li>Status: Cult Classic</li>
-                    </ul>
-                </div>
-
-                <!-- The Guide Section -->
-                <div class="guide-section">
-                    <h3>About the Guide</h3>
-                    <p>"The Hitchhiker's Guide to the Galaxy" is more than just a book – it's one of the most important technological devices in the galaxy. The electronic edition of this guide contains detailed information about every planet, every civilization, and every tea shop in the galaxy.</p>
-                    
-                    <p>It is important to note that the first rule of the Guide is: "DON'T PANIC." This advice proves especially important when faced with the absurdity of the universe.</p>
-                    
-                    <p>Legend has it that this guide was written by a completely rational yet extremely pessimistic race known as the Vogons, who spent 7.5 million years figuring out the answer to the question of life, the universe, and everything. The answer: 42.</p>
-                </div>
-
-                <!-- Famous Quotes -->
-                <div class="guide-section">
-                    <h3>Famous Quotes</h3>
-                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
-                        "Don't Panic."
-                        <br><small>— The Hitchhiker's Guide to the Galaxy</small>
-                    </blockquote>
-                    
-                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
-                        "The universe is big. Really big. You just won't believe how vastly, hugely, mind-bogglingly big it is."
-                        <br><small>— Ford Prefect</small>
-                    </blockquote>
-                    
-                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
-                        "The answer is 42. But what was the question?"
-                        <br><small>— Deep Thought</small>
-                    </blockquote>
-                    
-                    <blockquote style="font-style: italic; margin-bottom: 16px; padding-left: 16px; border-left: 3px solid #1A1A1A;">
-                        "A towel is about the most massively useful thing an interstellar hitchhiker can have."
-                        <br><small>— Ford Prefect</small>
-                    </blockquote>
-                </div>
-            </aside>
-        </div>
-
-        <!-- Classifieds Footer -->
-        <footer class="classifieds">
-            <div class="classifieds-grid">
-                <div class="classified-item">
-                    <strong>VOGON POETRY LESSONS</strong>
-                    Professional instruction in the galaxy's most dreaded art form. Beginner classes only 5 Altarian dollars. No talent required – this course guarantees to make you worse.
-                </div>
-                <div class="classified-item">
-                    <strong>TOWEL EMPORIUM</strong>
-                    The most important item in the galaxy! Every size, color, and material available. Buy a towel, get a survival guide booklet FREE!
-                </div>
-                <div class="classified-item">
-                    <strong>HYPERSPACE ENGINE REPAIR</strong>
-                    Professional service for all types of hyperspace propulsion systems. 24-hour service, galaxy-wide pickup available. Satisfaction guaranteed or money back.
-                </div>
-                <div class="classified-item">
-                    <strong>ARTHUR DENT CONSULTING</strong>
-                    Galaxy survival advice from a former Earthling. Packages include: moral support, basic survival skills, local cultural guidance. Special offer this week!
-                </div>
-                <div class="classified-item">
-                    <strong>BABEL FISH RENTAL</strong>
-                    Instant translation device rental. Just insert into ear, understand any language! 2 Altarian dollars per hour, daily rates available.
-                </div>
-                <div class="classified-item">
-                    <strong>IMPOSSIBILITY DRIVE</strong>
-                    Make the impossible possible! Although we don't know how it works, it definitely works. Price: Only 500,000 Altarian dollars.
-                </div>
-                <div class="classified-item">
-                    <strong>HITCHHIKER'S GUIDE SUBSCRIPTION</strong>
-                    Latest edition with information on 99.97% of the galaxy. Regular updates, error corrections, affordable prices. Only 12 Altarian dollars per month.
-                </div>
-                <div class="classified-item">
-                    <strong>YELLOW SMALL CREATURE RESCUE</strong>
-                    Specialized care for small yellow creatures lost in hyperspace travel. We promise your creature will be safely returned home (or at least to a nice place).
-                </div>
-                <div class="classified-item">
-                    <strong>DEEP THOUGHT CONSULTING</strong>
-                    Get answers to life's biggest questions. 7.5 million years to respond. No question too big or too small. Special rates for cosmic inquiries.
-                </div>
-                <div class="classified-item">
-                    <strong>MARVIN THE PARANOID ANDROID REPAIRS</strong>
-                    Feeling depressed? Let Marvin fix your electronics while he complains about it. Rates negotiable. WARNING: May cause existential crisis.
-                </div>
-                <div class="classified-item">
-                    <strong>PAN GALACTIC GARGBLERS</strong>
-                    The galaxy's worst band. Now accepting bookings for parties, funerals, and unwanted alien invasions. Specializing in discordant harmonies and cosmic despair.
-                </div>
-                <div class="classified-item">
-                    <strong>SLEEPING ZAPHOD</strong>
-                    Need a quiet place? Our hotel specializes in two-headed guests. Breakfast included. Please wake the management carefully – they may be slightly paranoid.
-                </div>
             </div>
+        </section>
+
+        <!-- The Original Trilogy -->
+        <section id="originals" class="timeline-section">
+            <h2 class="section-title">THE GALACTIC CIVIL WAR ERA</h2>
+            <div class="movie-grid">
+                <article class="movie-card episode-4">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg" alt="A New Hope" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE IV</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode IV</p>
+                        <h3 class="movie-title">A New Hope</h3>
+                        <p class="movie-meta">1977 • Directed by George Lucas</p>
+                        <p class="movie-synopsis">Young Luke Skywalker discovers a message from a princess hidden in a droid, setting him on a journey to become a Jedi Knight. Alongside a smuggler and a Wookiee, he must deliver the plans to destroy the Empire's deadly weapon and restore hope to the galaxy.</p>
+                        <a href="https://www.imdb.com/title/tt0076759/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+
+                <article class="movie-card episode-5">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg" alt="The Empire Strikes Back" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE V</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode V</p>
+                        <h3 class="movie-title">The Empire Strikes Back</h3>
+                        <p class="movie-meta">1980 • Directed by Irvin Kershner</p>
+                        <p class="movie-synopsis">The Rebellion retreats after the destruction of their base on Hoth. While Han and Leia escape to Bespin, Luke trains with Yoda on Dagobah. The film culminates in one of cinema's most shocking revelations as Luke learns a terrible truth about his father.</p>
+                        <a href="https://www.imdb.com/title/tt0080684/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+
+                <article class="movie-card episode-6">
+                    <div class="movie-poster">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/b/b2/ReturnOfTheJediPoster1983.jpg" alt="Return of the Jedi" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE VI</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode VI</p>
+                        <h3 class="movie-title">Return of the Jedi</h3>
+                        <p class="movie-meta">1983 • Directed by Richard Marquand</p>
+                        <p class="movie-synopsis">The Rebellion launches a desperate mission to destroy the new Death Star. Luke confronts his father Darth Vader in a final duel aboard the Emperor's throne room. Through love and sacrifice, Anakin Skywalker redeems himself and brings balance to the Force.</p>
+                        <a href="https://www.imdb.com/title/tt0086190/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- The Sequel Trilogy -->
+        <section id="sequels" class="timeline-section">
+            <h2 class="section-title">THE RESISTANCE ERA</h2>
+            <div class="movie-grid">
+                <article class="movie-card episode-7">
+                    <div class="movie-poster">
+                        <img src="https://image11.m1905.cn/uploadfile/2015/1105/thumb_9_222_222_20151105092738522759.jpg" alt="The Force Awakens" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE VII</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode VII</p>
+                        <h3 class="movie-title">The Force Awakens</h3>
+                        <p class="movie-meta">2015 • Directed by J.J. Abrams</p>
+                        <p class="movie-synopsis">Thirty years after the fall of the Empire, a new threat emerges from the shadows. Scavenger Rey and stormtrooper Finn join the Resistance to find Luke Skywalker and stop the First Order. Their journey introduces new heroes and a renewed battle between light and darkness.</p>
+                        <a href="https://www.imdb.com/title/tt2488496/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+
+                <article class="movie-card episode-8">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg" alt="The Last Jedi" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE VIII</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode VIII</p>
+                        <h3 class="movie-title">The Last Jedi</h3>
+                        <p class="movie-meta">2017 • Directed by Rian Johnson</p>
+                        <p class="movie-synopsis">Rey seeks training from an aging Luke Skywalker, while the Resistance flees the First Order across the galaxy. The film challenges expectations and traditions, exploring themes of failure, legacy, and the nature of the Force. A new generation must choose their own path forward.</p>
+                        <a href="https://www.imdb.com/title/tt2527336/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+
+                <article class="movie-card episode-9">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/tQ5gSCS4h1QygtDnwCoOYi3YIva.jpg" alt="The Rise of Skywalker" class="movie-poster-image">
+                        <div class="movie-poster-mask"></div>
+                        <span class="poster-text">EPISODE IX</span>
+                    </div>
+                    <div class="movie-info">
+                        <p class="movie-episode">Episode IX</p>
+                        <h3 class="movie-title">The Rise of Skywalker</h3>
+                        <p class="movie-meta">2019 • Directed by J.J. Abrams</p>
+                        <p class="movie-synopsis">The saga concludes as Rey prepares for her final confrontation with Kylo Ren. An ancient evil awakens, and the galaxy's heroes must unite one last time. In an epic finale spanning worlds and generations, the story of the Skywalker family reaches its definitive end.</p>
+                        <a href="https://www.imdb.com/title/tt2527338/" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                            🎬 View on IMDb
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <footer>
+            <p class="footer-logo">STAR WARS</p>
+            <p class="footer-text">This is a fan-made tribute to one of cinema's most iconic franchises. May the Force be with you, always.</p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const timelineSections = document.querySelectorAll('.timeline-section');
+
+            // Tab switching functionality
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Update active button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show corresponding section
+                    timelineSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetTab) {
+                            section.classList.add('active');
+                        }
+                    });
+
+                    // Scroll to top of content on mobile
+                    if (window.innerWidth < 768) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        window.scrollTo({
+                            top: headerHeight - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Keyboard navigation for tabs
+            document.addEventListener('keydown', function(e) {
+                const currentActiveIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const nextIndex = (currentActiveIndex + 1) % tabButtons.length;
+                    tabButtons[nextIndex].click();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prevIndex = (currentActiveIndex - 1 + tabButtons.length) % tabButtons.length;
+                    tabButtons[prevIndex].click();
+                }
+            });
+
+            // Add subtle parallax effect to movie cards
+            document.querySelectorAll('.movie-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+
+                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+                });
+            });
+
+            // Add entrance animation for cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.movie-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
